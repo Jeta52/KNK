@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginViewController">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="264.0" style="-fx-background-color: #214A79;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="252.0" layoutX="-1.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../OneDrive/Desktop/KNK%20-%20Projekti/AirportiPrishtines1.svg.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="402.0" prefWidth="323.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutY="55.0" prefHeight="37.0" prefWidth="338.0" text="Login" textFill="#214a79">
+               <font>
+                  <Font name="Times New Roman Bold" size="32.0" />
+               </font>
+            </Label>
+            <GridPane alignment="CENTER" layoutX="60.0" layoutY="155.0" prefHeight="125.0" prefWidth="249.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="83.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="157.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Username">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Password" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameTxtField" prefHeight="25.0" prefWidth="137.0" promptText="Enter your username" GridPane.columnIndex="1" />
+                  <PasswordField fx:id="passwordTxtField" promptText="Enter your password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="154.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Button fx:id="signinButton" mnemonicParsing="false" onAction="#loginEventHandler" prefHeight="29.0" prefWidth="67.0" style="-fx-background-color: #214A79;" text="Sign in" textFill="WHITE">
+                           <font>
+                              <Font name="Times New Roman Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cancelButton" alignment="CENTER" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="29.0" prefWidth="69.0" style="-fx-background-color: #214A79; -fx-border-radius: 5;" text="Cancel" textFill="WHITE">
+                           <font>
+                              <Font name="Times New Roman Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+            <Hyperlink fx:id="signUp" alignment="CENTER" layoutX="-1.0" layoutY="292.0" onAction="#signUpEventHandler" prefHeight="24.0" prefWidth="343.0" text="Sign up if you haven't already !" />
+            <Label fx:id="loginMsgLabel" layoutX="60.0" layoutY="124.0" prefHeight="17.0" prefWidth="276.0" textFill="RED">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
