@@ -13,8 +13,8 @@ public class LoginProcessor {
 	}
 
 	
-	public boolean isUserValid(String username, String password) throws NoSuchAlgorithmException {
-		Login loginUser = this.loginRepository.findOne(username);
+	public boolean isUserValid(String email, String password) throws NoSuchAlgorithmException {
+		Login loginUser = this.loginRepository.findOne(email);
 		if(loginUser == null) {
 			return false;
 		}
@@ -27,4 +27,12 @@ public class LoginProcessor {
 		
 		return false;
 	}
+	
+	public boolean isUserAdmin(String email) throws NoSuchAlgorithmException {
+		if(email.equals("admin@admin.com")) {
+			return true;
+		}
+		return false;
+	}
 }
+

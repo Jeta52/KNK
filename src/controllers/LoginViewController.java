@@ -28,7 +28,7 @@ public class LoginViewController {
 	@FXML 
 	private Button cancelButton;
 	@FXML 
-	private TextField usernameTxtField;
+	private TextField emailTxtField;
 	@FXML 
 	private PasswordField passwordTxtField;
 	@FXML 
@@ -40,12 +40,17 @@ public class LoginViewController {
 	
 	@FXML
 	private void loginEventHandler(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
-		String username = this.usernameTxtField.getText();
+		String email = this.emailTxtField.getText();
 		String password = this.passwordTxtField.getText();
-		if(this.loginProcessor.isUserValid(username, password)) {
-			this.loadHomePage((Node) ae.getSource());
+		
+		if(this.loginProcessor.isUserValid(email, password) & email != "" || password != "" ) {
+			if(this.loginProcessor.isUserAdmin(email)) {
+				this.loadAddView((Node) ae.getSource());
+			} else {
+				this.loadHomePage((Node) ae.getSource());
+			}
 		}else {
-			loginMsgLabel.setText("Please enter username and password !");
+			loginMsgLabel.setText("Please enter email and password !");
 		}
 	}
 	
@@ -66,10 +71,10 @@ public class LoginViewController {
 	
 	private void loadHomePage(Node source) throws IOException {
 		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("")
+				getClass().getResource("/views/HomeView.fxml")
 				);
 		Parent pane = loader.load();
-		Scene scene = new Scene(pane, 640, 400);
+		Scene scene = new Scene(pane, 920, 760);
 		Stage primaryStage = (Stage) source.getScene().getWindow();
 		primaryStage.setScene(scene);
 	}
@@ -77,6 +82,16 @@ public class LoginViewController {
 	private void loadSignUp(Node source) throws IOException {
 		FXMLLoader loader = new FXMLLoader(
 				getClass().getResource("/views/SignUpView.fxml")
+				);
+		Parent pane = loader.load();
+		Scene scene = new Scene(pane, 640, 400);
+		Stage primaryStage = (Stage) source.getScene().getWindow();
+		primaryStage.setScene(scene);
+	}
+	
+	private void loadAddView(Node source) throws IOException {
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("")
 				);
 		Parent pane = loader.load();
 		Scene scene = new Scene(pane, 640, 400);

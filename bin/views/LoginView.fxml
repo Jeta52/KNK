@@ -46,7 +46,7 @@
                 <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Username">
+                  <Label text="Email">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -56,7 +56,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="usernameTxtField" prefHeight="25.0" prefWidth="137.0" promptText="Enter your username" GridPane.columnIndex="1" />
+                  <TextField fx:id="emailTxtField" prefHeight="25.0" prefWidth="137.0" promptText="Enter your username" GridPane.columnIndex="1" />
                   <PasswordField fx:id="passwordTxtField" promptText="Enter your password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER" prefHeight="61.0" prefWidth="154.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>

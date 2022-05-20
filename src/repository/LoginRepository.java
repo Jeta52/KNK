@@ -1,10 +1,11 @@
 package repository;
 
-import java.sql.ResultSet; 
+import java.sql.ResultSet;
 
 import database.DBConnect;
 import database.FilterQueryBuilder;
 import database.InsertQueryBuilder;
+import model.CreateUserDTO;
 import model.Login;
 
 
@@ -26,7 +27,6 @@ public class LoginRepository {
 				return Login.createFromValue(
 						res.getInt("id"),
 						res.getString("email"),
-						res.getString("password"),
 						res.getString("saltedhash"),
 						res.getString("salted")
 						);
@@ -38,5 +38,28 @@ public class LoginRepository {
 		}
 	}
 	
+	public boolean create(CreateUserDTO userDto) {
+		try {
+			InsertQueryBuilder query = (InsertQueryBuilder)
+					InsertQueryBuilder.create("user")
+					.add("id", 0, "i")
+					.add("NAME", userDto.getName(), "s")
+					.add("lastname", userDto.getLastName(), "s")
+					.add("email", userDto.getEmail(), "s")
+					.add("saltedhash", userDto.getSaltedHash(), "s")
+					.add("salted", userDto.getSalted(), "s");
+					;
 
+			int lastInsertedId = 
+					this.connection.execute(
+							query.getQuery(), query.getTypes(), query.getValues()
+							);
+			if (lastInsertedId > 0) {
+				return true;
+			}
+			return false;
+		}catch(Exception e) {
+			return false;
+		}
+	}
 }
