@@ -140,31 +140,25 @@ public class FlightViewController1 implements Initializable{
 		
     }
 
-    	ObservableList<Flight1>list=FXCollections.observableArrayList(
-    			new Flight1("IV650", "GP AVIATION","Munich", "21 May", "11:30", "","CANCELLED"),
-    			new Flight1("IV630", "GP AVIATION","Sttutgart", "21 May", "12:00", "12:00","TAKE OFF 12:11"),
-    			new Flight1("OS768", "AUSTRIAN AIRLINES","Vienna", "21 May", "12:25", "13:15","TAKE OFF 13:12"),
-    			new Flight1("W97791", "WIZZ AIR UK","London - Luton", "21 May", "12:40", "12:40","TAKE OFF 12:44"),
-    			new Flight1("LI1806", "ETF AIRWAYS","Basel - Mulhouse", "21 May", "12:55", "13:35","TAKE OFF 13:42"),
-    			new Flight1("EW6622", "EUROWINGS","Geneve", "21 May", "13:25", "13:55","EXPECTED 13:55"),
-    			new Flight1("W67787", "WIZZ AIR HUNGARY","Basel - Mulhouse", "21 May", "13:45", "14:01","EXPECTED 14:01"),
-    			new Flight1( "E46052","ENTER AIR", "Basel - Mulhouse","21 May", "14:05", "14:05","EXPECTED 14:05"),
-    			new Flight1("EW5705", "EUROWINGS","Hamburg", "21 May", "14:45", "14:45","EXPECTED 14:45"),
-    			new Flight1("EZS1186", "EASYJET","Sttutgart", "Basel - Mulhouse", "15:05", "15:05","EXPECTED 15:05"),
-    			new Flight1("IV650", "GP AVIATION","Munich", "21 May", "11:30", "","CANCELLED"),
-    			new Flight1("IV630", "GP AVIATION","Sttutgart", "21 May", "12:00", "12:00","TAKE OFF 12:11"),
-    			new Flight1("OS768", "AUSTRIAN AIRLINES","Vienna", "21 May", "12:25", "13:15","TAKE OFF 13:12"),
-    			new Flight1("W97791", "WIZZ AIR UK","London - Luton", "21 May", "12:40", "12:40","TAKE OFF 12:44"),
-    			new Flight1("LI1806", "ETF AIRWAYS","Basel - Mulhouse", "21 May", "12:55", "13:35","TAKE OFF 13:42"),
-    			new Flight1("EW6622", "EUROWINGS","Geneve", "21 May", "13:25", "13:55","EXPECTED 13:55"),
-    			new Flight1("W67787", "WIZZ AIR HUNGARY","Basel - Mulhouse", "21 May", "13:45", "14:01","EXPECTED 14:01"),
-    			new Flight1( "E46052","ENTER AIR", "Basel - Mulhouse","21 May", "14:05", "14:05","EXPECTED 14:05"),
-    			new Flight1("EW5705", "EUROWINGS","Hamburg", "21 May", "14:45", "14:45","EXPECTED 14:45"),
-    			new Flight1("EZS1186", "EASYJET","Sttutgart", "Basel - Mulhouse", "15:05", "15:05","EXPECTED 15:05"));
+    	ObservableList<Flight1>list=FXCollections.observableArrayList();
+    	
     			
     	 @Override
     		public void initialize(URL arg0, ResourceBundle arg1) {
     		 
+    		 
+    				try {
+    				Connection con=DBConnect.connection();
+    				ResultSet rs=con.createStatement().executeQuery("select * from flights2");
+    				
+    				while (rs.next()) {
+    					list.add(new Flight1(rs.getString("flight2"),rs.getString("airline2"),rs.getString("to2"),rs.getString("date2"),rs.getString("scheduled2"),rs.getString("etd2"),rs.getString("status2")));
+    				}
+    				
+    				
+    			}catch(SQLException ex) {
+    				Logger.getLogger(FlightViewController.class.getName()).log(Level.SEVERE,null, ex);
+    			}
     		 
     				flight1.setCellValueFactory(new PropertyValueFactory<Flight1,String>("flight1"));
     				airline1.setCellValueFactory(new PropertyValueFactory<Flight1,String>("airline1"));
@@ -175,6 +169,8 @@ public class FlightViewController1 implements Initializable{
     				status1.setCellValueFactory(new PropertyValueFactory<Flight1,String>("status1"));
     				
     				table1.setItems(list);
+    				
+    			}
     				
     			}
 
