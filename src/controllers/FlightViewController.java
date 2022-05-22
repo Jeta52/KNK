@@ -139,32 +139,23 @@ public class FlightViewController implements Initializable{
     }
 
 			
-
+		ObservableList<Flight2>list1=FXCollections.observableArrayList();
 		@Override
 		public void initialize(URL url, ResourceBundle rb) {
 			
-			ObservableList<Flight2>list1=FXCollections.observableArrayList(
-					new Flight2("EW6617", "ETF AIRWAYS","Bremen", "21 May", "11:30", "11:25","ARRIVED 11:12"),
-					new Flight2("OS767", "AUSTRIAN AIRLINES","Vienna", "21 May", "11:40", "12:31","ARRIVED 12:31"),
-					new Flight2("W97792", "WIZZ AIR UK","London-Lutton", "21 May", "12:05", "11:49","ARRIVED 11:50"),
-					new Flight2("EW6603", "EUROWINGS","Hannover", "21 May", "12:35", "13:06","TAKE OFF 12:11"),
-					new Flight2("W67788", "WIZZ AIR HUNGARY", "Basel - Mulhouse","21 May", "13:05", "13:32","ARRIVED 13:28"),
-					new Flight2("E46051", "ENTER AIR","Basel - Mulhouse", "21 May", "13:15", "13:25	","ARRIVED 13:24"),
-					new Flight2("EW5712", "EUROWINGS","Sttutgart", "21 May", "14:05", "14:05","APPROACH 13:57"),
-					new Flight2("EZS1185", "EASYJET","SBasel - Mulhouse", "21 May", "14:20", "14:20","EXPECTED 14:20"),
-					new Flight2("IV651", "GP AVIATION","Munich", "21 May", "16:25", "","CANCELLED"),
-					new Flight2("C32505", "TRADE AIR","Dusseldorf", "21 May", "16:25", "","SCHEDULED"),
 			
-					new Flight2("EW6617", "ETF AIRWAYS","Bremen", "21 May", "11:30", "11:25","ARRIVED 11:12"),
-					new Flight2("OS767", "AUSTRIAN AIRLINES","Vienna", "21 May", "11:40", "12:31","ARRIVED 12:31"),
-					new Flight2("W97792", "WIZZ AIR UK","London-Lutton", "21 May", "12:05", "11:49","ARRIVED 11:50"),
-					new Flight2("EW6603", "EUROWINGS","Hannover", "21 May", "12:35", "13:06","TAKE OFF 12:11"),
-					new Flight2("W67788", "WIZZ AIR HUNGARY", "Basel - Mulhouse","21 May", "13:05", "13:32","ARRIVED 13:28"),
-					new Flight2("E46051", "ENTER AIR","Basel - Mulhouse", "21 May", "13:15", "13:25	","ARRIVED 13:24"),
-					new Flight2("EW5712", "EUROWINGS","Sttutgart", "21 May", "14:05", "14:05","APPROACH 13:57"),
-					new Flight2("EZS1185", "EASYJET","SBasel - Mulhouse", "21 May", "14:20", "14:20","EXPECTED 14:20"),
-					new Flight2("IV651", "GP AVIATION","Munich", "21 May", "16:25", "","CANCELLED"),
-					new Flight2("C32505", "TRADE AIR","Dusseldorf", "21 May", "16:25", "","SCHEDULED"));
+			try {
+				Connection con=DBConnect.connection();
+				ResultSet rs=con.createStatement().executeQuery("select * from flights1");
+				
+				while (rs.next()) {
+					list1.add(new Flight2(rs.getString("flight1"),rs.getString("airline1"),rs.getString("from1"),rs.getString("date1"),rs.getString("scheduled1"),rs.getString("eta"),rs.getString("status1")));
+				}
+				
+				
+			}catch(SQLException ex) {
+				Logger.getLogger(FlightViewController.class.getName()).log(Level.SEVERE,null, ex);
+			}
 			flight.setCellValueFactory(new PropertyValueFactory<Flight2,String>("flight"));
 			airline.setCellValueFactory(new PropertyValueFactory<Flight2,String>("airline"));
 			date.setCellValueFactory(new PropertyValueFactory<Flight2,String>("date"));
@@ -175,7 +166,7 @@ public class FlightViewController implements Initializable{
 			
 			table.setItems(list1);
 			
-			table.refresh();
+			//table.refresh();
 			
 		
 	}
