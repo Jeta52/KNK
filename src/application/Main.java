@@ -16,13 +16,13 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		
 		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("/views/LoginView.fxml")
+				getClass().getResource("/views/HomeView.fxml")
 				);
 		
 		Parent pane = loader.load();
 	
 		
-		Scene scene = new Scene(pane, 640, 400);
+		Scene scene = new Scene(pane, 920, 760);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
