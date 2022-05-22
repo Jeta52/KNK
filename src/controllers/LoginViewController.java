@@ -91,7 +91,7 @@ public class LoginViewController {
 	
 	private void loadAddView(Node source) throws IOException {
 		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("")
+				getClass().getResource("/views/AdminView.fxml")
 				);
 		Parent pane = loader.load();
 		Scene scene = new Scene(pane, 640, 400);
