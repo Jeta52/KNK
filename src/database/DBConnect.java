@@ -83,4 +83,21 @@ public class DBConnect {
 			e.printStackTrace();
 		}
 	}
+	public static ObservableList<AddFlight>getFlight(){
+    	Connection conn=connection();
+    	
+    	ObservableList<AddFlight>list=FXCollections.observableArrayList();
+    	try {
+    		PreparedStatement ps=conn.prepareStatement("select * from flights1");
+    		ResultSet rs=ps.executeQuery();
+    		while(rs.next()) {
+    			list.add(new AddFlight(rs.getString("flight2"),rs.getString("airline2"),rs.getString("from2"),rs.getString("date2"),rs.getString("scheduled2"),rs.getString("eta2"),rs.getString("status2")));
+    			
+    		}
+    	}catch(Exception e) {
+    		
+    	}
+    	
+    	return list;
+    }
 }
