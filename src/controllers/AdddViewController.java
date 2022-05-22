@@ -239,12 +239,34 @@ ObservableList<AddFlight> dataList;
   
   
   
-    
+   	ObservableList<AddFlight>list3=FXCollections.observableArrayList();
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		UpdateTable();
-		search_flight();
+			try {
+			Connection con=DBConnect.connection();
+			ResultSet rs=con.createStatement().executeQuery("select * from flights1");
+			
+			while (rs.next()) {
+				list3.add(new AddFlight(rs.getString("flight1"),rs.getString("airline1"),rs.getString("from1"),rs.getString("date1"),rs.getString("scheduled1"),rs.getString("eta"),rs.getString("status1")));
+			}
+			
+			
+		}catch(SQLException ex) {
+			Logger.getLogger(FlightViewController.class.getName()).log(Level.SEVERE,null, ex);
+		}
+		Flight.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("flight"));
+		Airline.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("airline"));
+		Date.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("date"));
+		From.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("from"));
+		Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("scheduled"));
+		Eta.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("eta"));
+		Status.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("status"));
+		
+		Table.setItems(list3);
+//		UpdateTable();
+//		search_flight();
+		
 		
 	}
 
