@@ -34,14 +34,25 @@ country varchar(50),
 city varchar(50),
 primary key(com_id));
 
-create table flights(
-flight_no integer,
-origin varchar(50),
-destination varchar(50),
-airport_arrival varchar(50),
-airport_name integer,
-foreign key(airport_name) references airlines_com(com_id),
-primary key(flight_no));
+create table flights1(
+flight1 varchar(50),
+airline1 varchar(50),
+from1 varchar(50),
+date1 varchar(50),
+scheduled1 varchar(50),
+eta varchar(50),
+status1 varchar(50),
+primary key(flight1));
+
+create table flights2(
+flight2 varchar(50),
+airline2 varchar(50),
+to2 varchar(50),
+date2 varchar(50),
+scheduled2 varchar(50),
+etd2 varchar(50),
+status2 varchar(50),
+primary key(flight2));
 
 create table passengers(
 p_id integer,
