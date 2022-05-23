@@ -73,13 +73,7 @@ public class HomeViewController {
 
 	    }
 	    private void language(Node source) throws IOException {
-			FXMLLoader loader = new FXMLLoader(
-					getClass().getResource("/views/.fxml")
-					);
-			Parent pane = loader.load();
-			Scene scene = new Scene(pane, 920, 760);
-			Stage primaryStage = (Stage) source.getScene().getWindow();
-			primaryStage.setScene(scene);
+			
 		}
 	    @FXML
 	    void login(ActionEvent event) throws IOException{
