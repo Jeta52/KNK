@@ -68,9 +68,15 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-               <items>
-                  <MenuItem fx:id="eng" mnemonicParsing="false" onAction="#english" text="English" />
-                  <MenuItem fx:id="ger" mnemonicParsing="false" onAction="#german" text="German" />
+              <items>
+                  <MenuItem fx:id="eng" mnemonicParsing="false" onAction="#english" text="English      ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="ger" mnemonicParsing="false" onAction="#german" text="German        ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="G" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                </items>
             </MenuButton>
          </children>
