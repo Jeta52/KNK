@@ -39,68 +39,72 @@ import model.AddFlight1;
 
 public class AddViewController1 implements Initializable {
 	@FXML
-    private TableColumn<AddFlight1, String> Airline;
+    private TableColumn<AddFlight1,String > Airline1;
 
     @FXML
-    private TableColumn<AddFlight1, String> Date;
+    private TableColumn<AddFlight1,String> Date1;
 
     @FXML
-    private TableColumn<AddFlight1, String> Eta;
+    private TableColumn<AddFlight1,String> Eta1;
 
     @FXML
-    private TableColumn<AddFlight1, String> Flight;
+    private TableColumn<AddFlight1,String> Flight1;
 
     @FXML
-    private TableColumn<AddFlight1, String> To;
+    private TableColumn<AddFlight1,String> Scheduled1;
 
     @FXML
-    private TableColumn<AddFlight1, String> Scheduled;
+    private TableColumn<AddFlight1,String> Status1;
 
     @FXML
-    private TableColumn<AddFlight1, String> Status;
+    private TableView<AddFlight1> Table1;
 
     @FXML
-    private TableView<AddFlight1> Table;
+    private TableColumn<AddFlight1,String> To1;
 
     @FXML
-    private Button AddFlight1;
-    @FXML
-    private Button delete;
-    @FXML
-    private Button update;
+    private Button addFlight1;
 
     @FXML
-    private TextField txt_airline;
+    private Button delete1;
 
     @FXML
-    private TextField txt_date;
+    private TextField filterField1;
 
     @FXML
-    private TextField txt_eta;
+    private Hyperlink flightHyp;
 
     @FXML
-    private TextField txt_flight;
+    private TextField txt_airline1;
 
     @FXML
-    private TextField txt_from;
+    private TextField txt_date1;
 
     @FXML
-    private TextField txt_scheduled;
+    private TextField txt_etd1;
 
     @FXML
-    private TextField txt_status;
+    private TextField txt_flight1;
+
     @FXML
-    private TextField filterField;
-    
+    private TextField txt_scheduled1;
+
     @FXML
-    private Hyperlink flighthyp;
+    private TextField txt_status1;
+
+    @FXML
+    private TextField txt_to1;
+
+    @FXML
+    private Button update1;
+
     
     
     
 int index = -1;
     
-ObservableList<AddFlight1> listM;
-ObservableList<AddFlight1> dataList;
+ObservableList<AddFlight1> listN;
+ObservableList<AddFlight1> DataList;
 
     Connection conn =null;
     ResultSet rs = null;
@@ -109,60 +113,60 @@ ObservableList<AddFlight1> dataList;
    
 
     
-    public void Add_flights (){    
+    public void Add_flights1 (){    
         conn = DBConnect.connection();
         String sql="insert into flights2(flight2, airline2 ,to2,date2,scheduled2,etd2,status2)values(?,?,?,?,?,?,?)";
     	try {
     		pst=conn.prepareStatement(sql);
-    		pst.setString(1, txt_flight.getText());
-    		pst.setString(2, txt_airline.getText());
-    		pst.setString(3, txt_from.getText());
-    		pst.setString(4, txt_date.getText());
-    		pst.setString(5, txt_scheduled.getText());
-    		pst.setString(6, txt_eta.getText());
-    		pst.setString(7, txt_status.getText());
+    		pst.setString(1, txt_flight1.getText());
+    		pst.setString(2, txt_airline1.getText());
+    		pst.setString(3, txt_to1.getText());
+    		pst.setString(4, txt_date1.getText());
+    		pst.setString(5, txt_scheduled1.getText());
+    		pst.setString(6, txt_etd1.getText());
+    		pst.setString(7, txt_status1.getText());
     		pst.execute();
     		JOptionPane.showMessageDialog(null, "Flight Add Success");
-    		UpdateTable();
-    		search_flight();
+    		UpdateTable1();
+    		search_flight1();
     	}catch(Exception e) {
     		JOptionPane.showMessageDialog(null, e);
     	}
 
     }
     @FXML
-    void getSelected(MouseEvent event) {
-    	index=Table.getSelectionModel().getSelectedIndex();
+    void getSelected1(MouseEvent event) {
+    	index=Table1.getSelectionModel().getSelectedIndex();
     	if(index<=-1) {
     		return;
     		
     	}
-    	txt_flight.setText(Flight.getCellData(index).toString());
-    	txt_airline.setText(Airline.getCellData(index).toString());
-    	txt_from.setText(To.getCellData(index).toString());
-    	txt_date.setText(Date.getCellData(index).toString());
-    	txt_scheduled.setText(Scheduled.getCellData(index).toString());
-    	txt_eta.setText(Eta.getCellData(index).toString());
-    	txt_status.setText(Status.getCellData(index).toString());
+    	txt_flight1.setText(Flight1.getCellData(index).toString());
+    	txt_airline1.setText(Airline1.getCellData(index).toString());
+    	txt_to1.setText(To1.getCellData(index).toString());
+    	txt_date1.setText(Date1.getCellData(index).toString());
+    	txt_scheduled1.setText(Scheduled1.getCellData(index).toString());
+    	txt_etd1.setText(Eta1.getCellData(index).toString());
+    	txt_status1.setText(Status1.getCellData(index).toString());
     }
     
-    public void Edit() {
+    public void Edit1() {
     	try {
     		conn=DBConnect.connection();
-    		String value1=txt_flight.getText();
-    		String value2=txt_airline.getText();
-    		String value3=txt_from.getText();
-    		String value4=txt_date.getText();
-    		String value5=txt_scheduled.getText();
-    		String value6=txt_eta.getText();
-    		String value7=txt_status.getText();
-    		String sql = "update flights2 set flight2= '"+value1+"',airline2= '"+value2+"',from2= '"+
-                    value3+"',date2= '"+value4+"',scheduled2= '"+value5+"',eta= '"+value6+"',status2= '"+value5+"' where flight2='"+value1+"' ";
+    		String value1=txt_flight1.getText();
+    		String value2=txt_airline1.getText();
+    		String value3=txt_to1.getText();
+    		String value4=txt_date1.getText();
+    		String value5=txt_scheduled1.getText();
+    		String value6=txt_etd1.getText();
+    		String value7=txt_status1.getText();
+    		String sql = "update flights2 set flight2= '"+value1+"',airline2= '"+value2+"',to2= '"+
+                    value3+"',date2= '"+value4+"',scheduled2= '"+value5+"',etd2= '"+value6+"',status2= '"+value5+"' where flight2='"+value1+"' ";
     		pst=conn.prepareStatement(sql);
     		pst.execute();
     		JOptionPane.showMessageDialog(null, "Update");
-    		UpdateTable();
-    		search_flight();
+    		UpdateTable1();
+    		search_flight1();
     		
     	}catch(Exception e) {
     		JOptionPane.showMessageDialog(null, e);
@@ -172,16 +176,16 @@ ObservableList<AddFlight1> dataList;
     
     
     
-  public void Delete() {
+  public void Delete1() {
 	  conn=DBConnect.connection();
 	  String sql="delete from flights2 where flight2=?";
 	  try {
 		  pst=conn.prepareStatement(sql);
-		  pst.setString(1, txt_flight.getText());
+		  pst.setString(1, txt_flight1.getText());
 		  pst.execute();
 		  JOptionPane.showMessageDialog(null, "Delete");
-		  UpdateTable();
-		  search_flight();
+		  UpdateTable1();
+		  search_flight1();
 		  
 	  }catch(Exception e) {
 		  JOptionPane.showMessageDialog(null, e);
@@ -189,64 +193,64 @@ ObservableList<AddFlight1> dataList;
 	  }
   }
   
-  public void UpdateTable() {
-	  Flight.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("flight2"));
-	  Airline.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("airline2"));
-	  To.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("to2"));
-	  Date.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("date2"));
-	  Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("scheduled2"));
-	  Eta.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("etd2"));
-	  Status.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("status2"));
-	  listM=DBConnect.getFlight1();
-	  Table.setItems(listM);
+  public void UpdateTable1() {
+	  Flight1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("flight2"));
+	  Airline1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("airline2"));
+	  To1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("to2"));
+	  Date1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("date2"));
+	  Scheduled1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("scheduled2"));
+	  Eta1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("etd2"));
+	  Status1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("status2"));
+	  listN=DBConnect.getFlight1();
+	  Table1.setItems(listN);
   }
   
   @FXML
-  void  search_flight() {
-	  Flight.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("flight2"));
-	  Airline.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("airline2"));
-	  To.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("to2"));
-	  Date.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("date2"));
-	  Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("scheduled2"));
-	 Eta.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("etd2"));
-	  Status.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("status2"));
-	  
-	  
-	  dataList=DBConnect.getFlight1();
-	  Table.setItems(dataList);
-	  
-	  FilteredList<AddFlight1>filteredData=new FilteredList<>(dataList,b->true);
-	  
-	  filterField.textProperty().addListener((observable,oldValue,newValue)->{
-		  filteredData.setPredicate(person->{
-			  if(newValue==null||newValue.isEmpty()) {
-				  return true;
-			  }
-			  String lowerCaseFilter=newValue.toLowerCase();
-			  
-			  if(person.getFlight().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getAirline().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getFrom().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getDate().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getScheduled().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getEta().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getStatus().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else
-				  return false;
-			  
-			  
-		  });
-	  });
-	  SortedList<AddFlight1>sortedData=new SortedList<>(filteredData);
-	  sortedData.comparatorProperty().bind(Table.comparatorProperty());
-	  Table.setItems(sortedData);
+  void  search_flight1() {
+//	  Flight.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("flight2"));
+//	  Airline.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("airline2"));
+//	  To.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("to2"));
+//	  Date.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("date2"));
+//	  Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("scheduled2"));
+//	 Eta.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("etd2"));
+//	  Status.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("status2"));
+//	  
+//	  
+//	  dataList=DBConnect.getFlight1();
+//	  Table.setItems(dataList);
+//	  
+//	  FilteredList<AddFlight1>filteredData=new FilteredList<>(dataList,b->true);
+//	  
+//	  filterField.textProperty().addListener((observable,oldValue,newValue)->{
+//		  filteredData.setPredicate(person->{
+//			  if(newValue==null||newValue.isEmpty()) {
+//				  return true;
+//			  }
+//			  String lowerCaseFilter=newValue.toLowerCase();
+//			  
+//			  if(person.getFlight().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getAirline().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getFrom().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getDate().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getScheduled().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getEta().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getStatus().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else
+//				  return false;
+//			  
+//			  
+//		  });
+//	  });
+//	  SortedList<AddFlight1>sortedData=new SortedList<>(filteredData);
+//	  sortedData.comparatorProperty().bind(Table.comparatorProperty());
+//	  Table.setItems(sortedData);
   }
  		
 	@FXML
@@ -275,15 +279,56 @@ ObservableList<AddFlight1> dataList;
 				list.add(new AddFlight1(rs.getString("flight2"),rs.getString("airline2"),rs.getString("to2"),rs.getString("date2"),rs.getString("scheduled2"),rs.getString("etd2"),rs.getString("status2")));
 			}
 		}catch(SQLException ex) {
-			Logger.getLogger(FlightViewController.class.getName()).log(Level.SEVERE,null, ex);
+			Logger.getLogger(FlightViewController1.class.getName()).log(Level.SEVERE,null, ex);
 		}
 		
-		Flight.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("flight2"));
-		Airline.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("airline2"));
-		To.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("to2"));
-		Date.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("date2"));
-		Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("scheduled2"));
-		Eta.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("etd2"));
-		Status.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("status2"));
+		Flight1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("flight"));
+		Airline1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("airline"));
+		To1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("to"));
+		Date1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("date"));
+		Scheduled1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("scheduled"));
+		Eta1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("etd"));
+		Status1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("status"));
+		
+		Table1.setItems(list);
+		
+		 FilteredList<AddFlight1>filteredData=new FilteredList<>(list,b->true);
+		  
+		  filterField1.textProperty().addListener((observable,oldValue,newValue)->{
+			  filteredData.setPredicate(person->{
+				  if(newValue==null||newValue.isEmpty()) {
+					  return true;
+				  }
+				  String lowerCaseFilter=newValue.toLowerCase();
+				  
+				  if(person.getFlight().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getAirline().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getTo().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getDate().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getScheduled().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getEtd().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getStatus().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else
+					  return false;
+				  
+				  
+			  });
+		  });
+		  SortedList<AddFlight1>sortedData=new SortedList<>(filteredData);
+		  sortedData.comparatorProperty().bind(Table1.comparatorProperty());
+		  Table1.setItems(sortedData);
+//		UpdateTable();
+//		search_flight();
+		
+		
 	}
-}
+
+
+	}
