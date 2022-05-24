@@ -69,8 +69,8 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <items>
-                  <MenuItem fx:id="eng" mnemonicParsing="false" onAction="#eng" text="English" />
-                  <MenuItem fx:id="ger" mnemonicParsing="false" onAction="#ger" text="German" />
+                  <MenuItem fx:id="eng" mnemonicParsing="false" onAction="#english" text="English" />
+                  <MenuItem fx:id="ger" mnemonicParsing="false" onAction="#german" text="German" />
                </items>
             </MenuButton>
          </children>
