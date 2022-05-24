@@ -71,11 +71,15 @@
               <items>
                   <MenuItem fx:id="eng" mnemonicParsing="false" onAction="#english" text="English      ">
                      <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                        <KeyCodeCombination alt="DOWN" code="E" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
                   <MenuItem fx:id="ger" mnemonicParsing="false" onAction="#german" text="German        ">
                      <accelerator>
                         <KeyCodeCombination alt="DOWN" code="G" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                      <MenuItem fx:id="al" mnemonicParsing="false" onAction="#albanian" text="Shqip        ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
                </items>
             </MenuButton>
