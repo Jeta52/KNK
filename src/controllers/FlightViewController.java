@@ -50,9 +50,7 @@ public class FlightViewController implements Initializable{
     @FXML
     private TableView<Flight2> table;
 
-    @FXML
-    private MenuButton flights;
-
+        
     @FXML
     private MenuButton language;
 
@@ -66,33 +64,23 @@ public class FlightViewController implements Initializable{
     private Button signup;
 
     @FXML
-    void flights(ActionEvent event)throws IOException {
-    	this.flights((Node) event.getSource());
+    private Button arrivals;
 
-    } private void flights(Node source) throws IOException {
-		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("/views/.fxml")
-				);
-		Parent pane = loader.load();
-		Scene scene = new Scene(pane, 640, 400);
-		Stage primaryStage = (Stage) source.getScene().getWindow();
-		primaryStage.setScene(scene);
-	}
 
     @FXML
+    private Button departures;
+
+    @FXML
+    private MenuItem eng;
+
+    @FXML
+    private MenuItem ger;
+    @FXML
     void language(ActionEvent event) throws IOException {
-        this.language((Node) event.getSource());
+      //
 
     }
-    private void language(Node source) throws IOException {
-		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("/views/.fxml")
-				);
-		Parent pane = loader.load();
-		Scene scene = new Scene(pane, 640, 400);
-		Stage primaryStage = (Stage) source.getScene().getWindow();
-		primaryStage.setScene(scene);
-	}
+   
     @FXML
     void login(ActionEvent event) throws IOException{
     	this.login((Node) event.getSource());
@@ -116,16 +104,18 @@ public class FlightViewController implements Initializable{
 				getClass().getResource("/views/NewsView.fxml")
 				);
 		Parent pane = loader.load();
-		Scene scene = new Scene(pane, 940, 760);
+		Scene scene = new Scene(pane, 920, 760);
 		Stage primaryStage = (Stage) source.getScene().getWindow();
 		primaryStage.setScene(scene);
 	}
+    
     @FXML
     void signup(ActionEvent event )throws IOException {
     	
     	this.signup((Node) event.getSource());
     
     }
+   
     private void signup(Node source) throws IOException {
 		FXMLLoader loader = new FXMLLoader(
 				getClass().getResource("/views/SignUpView.fxml")
@@ -134,9 +124,70 @@ public class FlightViewController implements Initializable{
 		Scene scene = new Scene(pane, 640, 400);
 		Stage primaryStage = (Stage) source.getScene().getWindow();
 		primaryStage.setScene(scene);
-		primaryStage.setResizable(false);	
-		
+		primaryStage.setResizable(false);		
+	}
+
+
+    
+    @FXML
+    void arrivals(ActionEvent event )throws IOException {
+    	
+    	this.arrivals((Node) event.getSource());
+    
     }
+   
+    private void arrivals(Node source) throws IOException {
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/views/FlightView.fxml")
+				);
+		Parent pane = loader.load();
+		Scene scene = new Scene(pane, 920, 760);
+		Stage primaryStage = (Stage) source.getScene().getWindow();
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);	
+    }
+		
+		
+		  
+	    @FXML
+	    void departures(ActionEvent event )throws IOException {
+	    	
+	    	this.departures((Node) event.getSource());
+	    
+	    }
+	   
+	    private void departures(Node source) throws IOException {
+			FXMLLoader loader = new FXMLLoader(
+					getClass().getResource("/views/FlightView2.fxml")
+					);
+			Parent pane = loader.load();
+			Scene scene = new Scene(pane, 920, 760);
+			Stage primaryStage = (Stage) source.getScene().getWindow();
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);	
+
+
+	    }
+			
+	    @FXML
+	    void eng(ActionEvent event) {
+	    	I18N.buttonForKey("button.english");
+	    	switchLanguage(Locale.ENGLISH);
+
+	    }
+
+	    @FXML
+	    void ger(ActionEvent event) {
+	    	I18N.buttonForKey("button.german");
+	    	switchLanguage(Locale.GERMAN);
+	    }
+
+	    
+	    private Integer numSwitches = 0;
+	    private void switchLanguage(Locale locale) {
+	        numSwitches++;
+	        I18N.setLocale(locale);
+	    }
 
 			
 		ObservableList<Flight2>list1=FXCollections.observableArrayList();
