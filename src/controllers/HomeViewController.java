@@ -51,6 +51,10 @@ public class HomeViewController {
 
 	    @FXML
 	    private MenuItem ger;
+	
+	    @FXML
+	    private MenuItem al;
+	
 
 
 	    @FXML
@@ -61,8 +65,12 @@ public class HomeViewController {
 	    	ger.setOnAction(a-> {
 	    		german(a);
 	    	});
-	    	language.getItems().addAll(eng,ger);	
-		}
+		    
+		 al.setOnAction(a-> {
+	    		albanian(a);
+	    	});
+	    	language.getItems().addAll(eng,ger,al);
+		    
 	    @FXML
 	    void login(ActionEvent event) throws IOException{
 	    	this.login((Node) event.getSource());
@@ -160,6 +168,13 @@ public class HomeViewController {
 		    loadMessages("de");
 		    	
 		    }
+	
+	            @FXML
+		    void albanian(ActionEvent event) {
+		    loadMessages("al");
+		    	
+		    }
+	
     private ResourceBundle bundle;
 	private void loadMessages(String messages) {
 		Locale locale = new Locale(messages);
