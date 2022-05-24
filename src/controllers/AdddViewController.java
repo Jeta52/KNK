@@ -190,50 +190,50 @@ ObservableList<AddFlight> dataList;
   
   @FXML
   void  search_flight() {
-	  Flight.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("flight2"));
-	  Airline.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("airline2"));
-	  From.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("from2"));
-	  Date.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("date2"));
-	  Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("scheduled2"));
-	 Eta.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("eta2"));
-	  Status.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("status2"));
-	  
-	  
-	  dataList=DBConnect.getFlight();
-	  Table.setItems(dataList);
-	  
-	  FilteredList<AddFlight>filteredData=new FilteredList<>(dataList,b->true);
-	  
-	  filterField.textProperty().addListener((observable,oldValue,newValue)->{
-		  filteredData.setPredicate(person->{
-			  if(newValue==null||newValue.isEmpty()) {
-				  return true;
-			  }
-			  String lowerCaseFilter=newValue.toLowerCase();
-			  
-			  if(person.getFlight().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getAirline().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getFrom().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getDate().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getScheduled().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getEta().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else if(person.getStatus().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-				  return true;
-			  }else
-				  return false;
-			  
-			  
-		  });
-	  });
-	  SortedList<AddFlight>sortedData=new SortedList<>(filteredData);
-	  sortedData.comparatorProperty().bind(Table.comparatorProperty());
-	  Table.setItems(sortedData);
+	  //	  Flight.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("flight2"));
+//	  Airline.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("airline2"));
+//	  From.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("from2"));
+//	  Date.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("date2"));
+//	  Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("scheduled2"));
+//	 Eta.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("eta2"));
+//	  Status.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("status2"));
+//	  
+//	  
+//	  dataList=DBConnect.getFlight();
+//	  Table.setItems(dataList);
+//	  
+//	  FilteredList<AddFlight>filteredData=new FilteredList<>(dataList,b->true);
+//	  
+//	  filterField.textProperty().addListener((observable,oldValue,newValue)->{
+//		  filteredData.setPredicate(person->{
+//			  if(newValue==null||newValue.isEmpty()) {
+//				  return true;
+//			  }
+//			  String lowerCaseFilter=newValue.toLowerCase();
+//			  
+//			  if(person.getFlight().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getAirline().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getFrom().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getDate().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getScheduled().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getEta().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else if(person.getStatus().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+//				  return true;
+//			  }else
+//				  return false;
+//			  
+//			  
+//		  });
+//	  });
+//	  SortedList<AddFlight>sortedData=new SortedList<>(filteredData);
+//	  sortedData.comparatorProperty().bind(Table.comparatorProperty());
+//	  Table.setItems(sortedData);
   }
   
   
@@ -264,6 +264,39 @@ ObservableList<AddFlight> dataList;
 		Status.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("status"));
 		
 		Table.setItems(list3);
+		
+		 FilteredList<AddFlight>filteredData=new FilteredList<>(list3,b->true);
+		  
+		  filterField.textProperty().addListener((observable,oldValue,newValue)->{
+			  filteredData.setPredicate(person->{
+				  if(newValue==null||newValue.isEmpty()) {
+					  return true;
+				  }
+				  String lowerCaseFilter=newValue.toLowerCase();
+				  
+				  if(person.getFlight().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getAirline().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getFrom().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getDate().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getScheduled().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getEta().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else if(person.getStatus().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+					  return true;
+				  }else
+					  return false;
+				  
+				  
+			  });
+		  });
+		  SortedList<AddFlight>sortedData=new SortedList<>(filteredData);
+		  sortedData.comparatorProperty().bind(Table.comparatorProperty());
+		  Table.setItems(sortedData);
 //		UpdateTable();
 //		search_flight();
 		
