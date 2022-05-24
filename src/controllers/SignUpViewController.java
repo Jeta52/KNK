@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -50,6 +51,9 @@ public class SignUpViewController {
 	@FXML
 	private Label msgLabel;
 	
+	@FXML 
+	private CheckBox terms;
+	
 	@FXML
 	private void signUpEventHandler(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
 		String name = nameTxt.getText();
@@ -63,18 +67,32 @@ public class SignUpViewController {
 			return;
 		} 
 		
-		
 		CreateUserDTO dtoObject = new CreateUserDTO(
 				name, lastname, email, password, confirmPassword);
 		
-		if(name != "" & lastname != "" & password != "" & confirmPassword != "" & email != "") {
+		if(!this.signUpProcessor.notNull(name, lastname, password, confirmPassword, email)) {
+			msgLabel.setText("Do not leave blank fields.");
+		}
+		
+		if(!this.signUpProcessor.emailValidation(email)) {
+			msgLabel.setText("Invalid email format!");
+		}
+		
+		if(!this.signUpProcessor.checkTerms(terms)) {
+			msgLabel.setText("You have to agree to our terms !");			
+		}
+		
+		if(!this.signUpProcessor.passwordValidation(password)) {
+			msgLabel.setText("Invalid password format !");
+		}
+		
+		if(this.signUpProcessor.notNull(name, lastname, password, confirmPassword, email) && this.signUpProcessor.checkTerms(terms) 
+		   && this.signUpProcessor.emailValidation(email) && this.signUpProcessor.passwordValidation(password)) {
 			if(this.signUpProcessor.createNewUser(dtoObject) ) {
 				this.loadLoginPage((Node) ae.getSource());
 			}else {
 				msgLabel.setText("Something went wrong."); 
 			}
-		} else {
-			msgLabel.setText("Do not leave blank fields !");
 		}
 	}
 	
