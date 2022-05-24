@@ -51,29 +51,17 @@ public class HomeViewController {
 
 	    @FXML
 	    private MenuItem ger;
-	    
-//	    @FXML
-//	    private Button bt;
-//	    
-//	    
-//	    @FXML
-//	    void bt (ActionEvent event) throws Exception{
-//	    	this.initialize(null, null);
-//	    	
-//	    }
-//	    
-//	  
-//	    private void initialize(URL location, ResourceBundle resources) {
-//	        I18N.setLocale(resources.getLocale());
-//	    }
+
 
 	    @FXML
 	    void language(ActionEvent event) throws IOException {
-            this.language((Node) event.getSource());
-
-	    }
-	    private void language(Node source) throws IOException {
-			
+          	eng.setOnAction(a-> {
+	    		english(a);
+	    	});
+	    	ger.setOnAction(a-> {
+	    		german(a);
+	    	});
+	    	language.getItems().addAll(eng,ger);	
 		}
 	    @FXML
 	    void login(ActionEvent event) throws IOException{
@@ -163,13 +151,13 @@ public class HomeViewController {
 
 		    }
 		    @FXML
-		    void eng(ActionEvent event) {
+		    void english(ActionEvent event) {
 		    	I18N.setLocale(Locale.ENGLISH);
 
 		    }
 
 		    @FXML
-		    void ger(ActionEvent event) {
+		    void german(ActionEvent event) {
 		    	I18N.setLocale(Locale.GERMAN);
 		    }
 
