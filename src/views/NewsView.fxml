@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeViewController">
+   <children>
+      <VBox layoutY="193.0" prefHeight="570.0" prefWidth="291.0" style="-fx-background-color: #214A79;">
+         <children>
+            <Button id="n" fx:id="news" alignment="CENTER" blendMode="LIGHTEN" centerShape="false" defaultButton="true" mnemonicParsing="false" onAction="#news" prefHeight="117.0" prefWidth="298.0" style="-fx-background-color: #214A79;" text="News" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Button>
+            <MenuButton id="f" fx:id="flights" accessibleRole="SCROLL_BAR" alignment="CENTER" mnemonicParsing="false" onAction="#flights" prefHeight="119.0" prefWidth="294.0" style="-fx-background-color: #214A79;" text="Flights" textAlignment="CENTER" textFill="WHITE">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Arrivals" />
+                <MenuItem mnemonicParsing="false" text="Departures" />
+              </items>
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+            <Button id="l" fx:id="login" mnemonicParsing="false" onAction="#login" prefHeight="116.0" prefWidth="298.0" style="-fx-background-color: #214A79;" text="Login" textFill="#faf6f6">
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button id="s" fx:id="signup" mnemonicParsing="false" onAction="#signup" prefHeight="118.0" prefWidth="288.0" style="-fx-background-color: #214A79;" text="Sign Up" textFill="#faf6f6">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false" onAction="#language" prefHeight="102.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Language" textFill="WHITE">
+              <items>
+                <MenuItem mnemonicParsing="false" text=" English                       Ctrl+C">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="C" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                <MenuItem mnemonicParsing="false" text="German">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="ADD" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+              </items>
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+         </children>
+      </VBox>
+      <ImageView fitHeight="197.0" fitWidth="291.0" layoutY="-3.0">
+         <image>
+            <Image url="file:///C:/Users/Admin/Downloads/knk_project_gr12/KNK_Project_Gr12_/images/logo.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="289.0" prefHeight="761.0" prefWidth="636.0">
+         <children>
+            <HBox fx:id="hboxlajmet" layoutX="17.0" layoutY="196.0" prefHeight="273.0" prefWidth="603.0" spacing="5.0" style="-fx-background-color: lightgrey;">
+               <children>
+                  <VBox prefHeight="273.0" prefWidth="312.0">
+                     <children>
+                        <Label prefHeight="43.0" prefWidth="313.0" text="Important announcment" textAlignment="CENTER">
+                           <font>
+                              <Font name="Berlin Sans FB" size="22.0" />
+                           </font>
+                           <padding>
+                              <Insets left="11.0" />
+                           </padding>
+                        </Label>
+                        <Label contentDisplay="CENTER" prefHeight="227.0" prefWidth="286.0" text="All passengers are informed that the flights during January 2023 will be canceled, due to the works at the &quot;Adem Jashari&quot; airport." wrapText="true">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                           <padding>
+                              <Insets left="11.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="273.0" prefWidth="320.0">
+                     <children>
+                        <Label prefHeight="41.0" prefWidth="305.0" text="Easing of sanitary measures">
+                           <font>
+                              <Font name="Berlin Sans FB" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="237.0" prefWidth="317.0" text="Since 16/05/2022, new sanitary measures apply: the obligation to wear a mask is suspended at the airport and on board aircraft for selected destinations. However, it is still recommended.Before travelling, please check with your airline directly. " wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
+            </HBox>
+            <Label fx:id="title" layoutX="132.0" layoutY="36.0" text="News &amp; Covid-19">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <BarChart fx:id="barchart" layoutX="17.0" layoutY="494.0" prefHeight="221.0" prefWidth="603.0" title="Flights Statistics">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </BarChart>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
