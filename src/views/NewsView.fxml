@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeViewController">
+<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewsViewController">
    <children>
       <VBox layoutY="193.0" prefHeight="570.0" prefWidth="291.0" style="-fx-background-color: #214A79;">
          <children>
@@ -36,7 +36,7 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></Button>
-            <MenuButton id="f" fx:id="flights" accessibleRole="SCROLL_BAR" alignment="CENTER" mnemonicParsing="false" onAction="#flights" prefHeight="119.0" prefWidth="294.0" style="-fx-background-color: #214A79;" text="Flights" textAlignment="CENTER" textFill="WHITE">
+            <MenuButton id="f" fx:id="flights" accessibleRole="SCROLL_BAR" alignment="CENTER" mnemonicParsing="false"  prefHeight="119.0" prefWidth="294.0" style="-fx-background-color: #214A79;" text="Flights" textAlignment="CENTER" textFill="WHITE">
               <items>
                 <MenuItem mnemonicParsing="false" text="Arrivals" />
                 <MenuItem mnemonicParsing="false" text="Departures" />
@@ -62,7 +62,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false" onAction="#language" prefHeight="102.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Language" textFill="WHITE">
+            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false"  prefHeight="102.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Language" textFill="WHITE">
               <items>
                 <MenuItem mnemonicParsing="false" text=" English                       Ctrl+C">
                      <accelerator>

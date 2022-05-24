@@ -7,6 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
+import model.AddFlight;
+import model.AddFlight1;
+
 public class DBConnect {
 	public static String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
 	private static String IP = "localhost:3306";
@@ -19,11 +25,13 @@ public class DBConnect {
 		return new DBConnect();
 	}
 	
-	private DBConnect() {
-		this.conn = this.connection();
+	
+	
+	private DBConnect() { 
+		this.conn = DBConnect.connection();
 	}
 	
-	private static Connection connection() {
+	public static Connection connection() {
 		try {
 			Class.forName(DBConnect.DRIVER_NAME);  
 			Connection con = DriverManager.getConnection(
@@ -63,12 +71,14 @@ public class DBConnect {
 		}
 
 		int lastInsertedId = 0;
-
+		
+		preparedStatement.execute();
+		
 		ResultSet res = preparedStatement.getGeneratedKeys();
 		if(res.next()) {
 			lastInsertedId = res.getInt(1);
 		}
-		preparedStatement.execute();
+		
 		preparedStatement.close();
 		this.close();
 		
@@ -83,13 +93,14 @@ public class DBConnect {
 			e.printStackTrace();
 		}
 	}
+	
 	public static ObservableList<AddFlight>getFlight(){
     	Connection conn=connection();
     	
     	ObservableList<AddFlight>list=FXCollections.observableArrayList();
     	try {
     		PreparedStatement ps=conn.prepareStatement("select * from flights1");
-    		ResultSet rs=ps.executeQuery();
+    		ResultSet rs=ps.executeQuery(); 
     		while(rs.next()) {
     			list.add(new AddFlight(rs.getString("flight2"),rs.getString("airline2"),rs.getString("from2"),rs.getString("date2"),rs.getString("scheduled2"),rs.getString("eta2"),rs.getString("status2")));
     			
@@ -100,4 +111,34 @@ public class DBConnect {
     	
     	return list;
     }
+	
+	public static ObservableList<AddFlight1>getFlight1(){
+    	Connection conn = connection();
+    	
+    	ObservableList<AddFlight1>list=FXCollections.observableArrayList();
+    	try {
+    		PreparedStatement ps=conn.prepareStatement("select * from flights2");
+    		ResultSet rs=ps.executeQuery();
+    		while(rs.next()) {
+    			list.add(new AddFlight1(rs.getString("flight2"),rs.getString("airline2"),rs.getString("to2"),rs.getString("date2"),rs.getString("scheduled2"),rs.getString("etd2"),rs.getString("status2")));	
+    		}
+    	}catch(Exception e) {
+    		
+    	}
+    	
+    	return list;
+    }
+	
+    public ResultSet count_values(String tableName, String groupby) throws SQLException {
+
+    	String query = "select month("+groupby+"), monthname("+groupby+"), count(*)  from "+ tableName+" group by month("+groupby+") order by  month("+groupby+") asc";
+   
+    	ResultSet rs =  this.conn.createStatement().executeQuery(query);
+    	System.out.println(rs);
+        return rs;
+    }
+    
+
+
+	
 }
