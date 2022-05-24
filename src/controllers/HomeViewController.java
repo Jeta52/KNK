@@ -150,16 +150,27 @@ public class HomeViewController {
 
 
 		    }
-		    @FXML
-		    void english(ActionEvent event) {
-		    	I18N.setLocale(Locale.ENGLISH);
-
+		   @FXML
+		   void english(ActionEvent event) {
+		    	loadMessages("en");
 		    }
 
 		    @FXML
 		    void german(ActionEvent event) {
-		    	I18N.setLocale(Locale.GERMAN);
+		    loadMessages("de");
+		    	
 		    }
+    private ResourceBundle bundle;
+	private void loadMessages(String messages) {
+		Locale locale = new Locale(messages);
+	    bundle = ResourceBundle.getBundle("resources.messages",locale);
+		news.setText(bundle.getString("Button"));
+		login.setText(bundle.getString("Button1"));
+		signup.setText(bundle.getString("Button2"));
+		arrivals.setText(bundle.getString("Button3"));
+		departures.setText(bundle.getString("Button4"));
+		language.setText(bundle.getString("MenuButton"));
+	}
 
 		 
 
