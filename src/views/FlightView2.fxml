@@ -20,7 +20,7 @@
 <AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlightViewController1">
    <children>
        <VBox layoutY="193.0" prefHeight="570.0" prefWidth="291.0" style="-fx-background-color: #214A79;">
-        <children>
+         <children>
             <Button fx:id="arrivals" defaultButton="true" mnemonicParsing="false" onAction="#arrivals" prefHeight="116.0" prefWidth="309.0" style="-fx-background-color: #214A79;" text="Arrivals" textFill="WHITE">
                <font>
                   <Font name="Times New Roman Bold Italic" size="22.0" />
@@ -73,8 +73,18 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <items>
-                  <MenuItem fx:id="eng" mnemonicParsing="false" onAction="#eng" text="English" />
-                  <MenuItem fx:id="ger" mnemonicParsing="false" onAction="#ger" text="German" />
+                  <MenuItem fx:id="eng" mnemonicParsing="false" onAction="#english" text="English      ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="E" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="ger" mnemonicParsing="false" onAction="#german" text="German        ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="G" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                       <MenuItem fx:id="al" mnemonicParsing="false" onAction="#albanian" text="Shqip        ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                </items>
             </MenuButton>
          </children>
