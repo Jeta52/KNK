@@ -127,7 +127,7 @@ ObservableList<AddFlight1> DataList;
     		pst.setString(7, txt_status1.getText());
     		pst.execute();
     		JOptionPane.showMessageDialog(null, "Flight Add Success");
-    		UpdateTable1();
+    		
     		
     	}catch(Exception e) {
     		JOptionPane.showMessageDialog(null, e);
@@ -161,11 +161,11 @@ ObservableList<AddFlight1> DataList;
     		String value6=txt_etd1.getText();
     		String value7=txt_status1.getText();
     		String sql = "update flights2 set flight2= '"+value1+"',airline2= '"+value2+"',to2= '"+
-                    value3+"',date2= '"+value4+"',scheduled2= '"+value5+"',etd2= '"+value6+"',status2= '"+value5+"' where flight2='"+value1+"' ";
+                    value3+"',date2= '"+value4+"',scheduled2= '"+value5+"',etd2= '"+value6+"',status2= '"+value7+"' where flight2='"+value1+"' ";
     		pst=conn.prepareStatement(sql);
     		pst.execute();
     		JOptionPane.showMessageDialog(null, "Update");
-    		UpdateTable1();
+    		
     		
     		
     	}catch(Exception e) {
@@ -184,7 +184,7 @@ ObservableList<AddFlight1> DataList;
 		  pst.setString(1, txt_flight1.getText());
 		  pst.execute();
 		  JOptionPane.showMessageDialog(null, "Delete");
-		  UpdateTable1();
+		  
 		  
 		  
 	  }catch(Exception e) {
@@ -193,18 +193,7 @@ ObservableList<AddFlight1> DataList;
 	  }
   }
   
-  public void UpdateTable1() {
-	  Flight1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("flight2"));
-	  Airline1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("airline2"));
-	  To1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("to2"));
-	  Date1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("date2"));
-	  Scheduled1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("scheduled2"));
-	  Eta1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("etd2"));
-	  Status1.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("status2"));
-	  listN=DBConnect.getFlight1();
-	  Table1.setItems(listN);
-  }
-  
+ 
   
  		
 	@FXML
