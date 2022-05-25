@@ -56,5 +56,6 @@
       <TextField fx:id="filterField1" layoutX="40.0" layoutY="439.0" promptText="Search" />
       <Label layoutX="14.0" layoutY="443.0" text="Filter" />
       <Hyperlink fx:id="flightHyp" layoutX="203.0" layoutY="440.0" onAction="#adminHandler" text="Add Flight Arrivals" />
+      <Hyperlink fx:id="flightarrival" layoutX="203.0" layoutY="468.0" onAction="#flightHandler" text="Flight Departure View" />
    </children>
 </AnchorPane>
