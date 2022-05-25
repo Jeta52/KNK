@@ -82,6 +82,8 @@ public class AdddViewController implements Initializable {
     private TextField txt_status;
     @FXML
     private TextField filterField;
+    @FXML
+    private Hyperlink flightHyp1;
     
 
     
@@ -238,6 +240,20 @@ ObservableList<AddFlight> dataList;
 //	  sortedData.comparatorProperty().bind(Table.comparatorProperty());
 //	  Table.setItems(sortedData);
   }
+	@FXML
+	private void adminHandler1(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
+			this.loadAdmin1((Node) ae.getSource());
+	}
+	
+	private void loadAdmin1(Node source) throws IOException {
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/views/AddView1.fxml")
+				);
+		Parent pane = loader.load();
+		Scene scene = new Scene(pane, 920, 760);
+		Stage primaryStage = (Stage) source.getScene().getWindow();
+		primaryStage.setScene(scene);
+	}
   
   
   
