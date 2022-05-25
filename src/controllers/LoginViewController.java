@@ -37,6 +37,10 @@ public class LoginViewController {
 	private Hyperlink signUp;
 	@FXML
 	private Label loginMsgLabel;
+	@FXML
+	private Label loginLabel;
+	@FXML
+	private Label passwordLbl;
 	
 	@FXML
 	private void loginEventHandler(ActionEvent ae) throws IOException, NoSuchAlgorithmException {

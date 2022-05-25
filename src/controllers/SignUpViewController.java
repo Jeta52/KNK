@@ -55,6 +55,23 @@ public class SignUpViewController {
 	private CheckBox terms;
 	
 	@FXML
+	private Label nameLbl;
+	
+	@FXML
+	private Label passwordLbl;
+	
+	@FXML
+	private Label signupLabel;
+	
+	@FXML
+	private Label lastNameLbl;
+	
+	@FXML
+	private Label pswRepeatLbl;
+	
+	
+	
+	@FXML
 	private void signUpEventHandler(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
 		String name = nameTxt.getText();
 		String lastname = lastNameTxt.getText();
