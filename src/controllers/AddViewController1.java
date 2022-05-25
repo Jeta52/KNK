@@ -97,9 +97,10 @@ public class AddViewController1 implements Initializable {
 
     @FXML
     private Button update1;
+	
+    @FXML
+    private Hyperlink flightarrival;
 
-    
-    
     
 int index = -1;
     
@@ -207,6 +208,21 @@ ObservableList<AddFlight1> DataList;
 				);
 		Parent pane = loader.load();
 		Scene scene = new Scene(pane, 920, 720);
+		Stage primaryStage = (Stage) source.getScene().getWindow();
+		primaryStage.setScene(scene);
+	}
+	
+	@FXML
+	private void flightHandler(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
+			this.loadFlight((Node) ae.getSource());
+	}
+	
+	private void loadFlight(Node source) throws IOException {
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/views/FlightView2.fxml")
+				);
+		Parent pane = loader.load();
+		Scene scene = new Scene(pane, 920, 760);
 		Stage primaryStage = (Stage) source.getScene().getWindow();
 		primaryStage.setScene(scene);
 	}
