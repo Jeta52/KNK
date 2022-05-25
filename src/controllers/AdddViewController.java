@@ -29,7 +29,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -125,7 +124,7 @@ ObservableList<AddFlight> dataList;
     		pst.setString(7, txt_status.getText());
     		pst.execute();
     		JOptionPane.showMessageDialog(null, "Flight Add Success");
-    		UpdateTable();
+    		
     		
     	}catch(Exception e) {
     		JOptionPane.showMessageDialog(null, e);
@@ -159,11 +158,11 @@ ObservableList<AddFlight> dataList;
     		String value6=txt_eta.getText();
     		String value7=txt_status.getText();
     		String sql = "update flights1 set flight1= '"+value1+"',airline1= '"+value2+"',from1= '"+
-                    value3+"',date1= '"+value4+"',scheduled1= '"+value5+"',eta= '"+value6+"',status1= '"+value5+"' where flight1='"+value1+"' ";
+                    value3+"',date1= '"+value4+"',scheduled1= '"+value5+"',eta= '"+value6+"',status1= '"+value7+"' where flight1='"+value1+"' ";
     		pst=conn.prepareStatement(sql);
     		pst.execute();
     		JOptionPane.showMessageDialog(null, "Update");
-    		UpdateTable();
+    		
     		
     		
     	}catch(Exception e) {
@@ -182,7 +181,7 @@ ObservableList<AddFlight> dataList;
 		  pst.setString(1, txt_flight.getText());
 		  pst.execute();
 		  JOptionPane.showMessageDialog(null, "Delete");
-		  UpdateTable();
+		  
 		 
 		  
 	  }catch(Exception e) {
@@ -191,18 +190,9 @@ ObservableList<AddFlight> dataList;
 	  }
   }
   
-  public void UpdateTable() {
-	  Flight.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("flight2"));
-	  Airline.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("airline2"));
-	  From.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("from2"));
-	  Date.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("date2"));
-	  Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("scheduled2"));
-	 Eta.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("eta2"));
-	  Status.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("status2"));
-	  listM=DBConnect.getFlight();
-	  Table.setItems(listM);
+
 	
-  }
+
   
  
 	@FXML
