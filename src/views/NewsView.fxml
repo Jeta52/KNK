@@ -12,79 +12,17 @@
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewsViewController">
+<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewsViewController">
    <children>
-      <VBox layoutY="193.0" prefHeight="570.0" prefWidth="291.0" style="-fx-background-color: #214A79;">
-         <children>
-            <Button id="n" fx:id="news" alignment="CENTER" blendMode="LIGHTEN" centerShape="false" defaultButton="true" mnemonicParsing="false" onAction="#news" prefHeight="117.0" prefWidth="298.0" style="-fx-background-color: #214A79;" text="News" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
-               </font>
-               <effect>
-                  <ColorAdjust />
-               </effect>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets></Button>
-            <MenuButton id="f" fx:id="flights" accessibleRole="SCROLL_BAR" alignment="CENTER" mnemonicParsing="false"  prefHeight="119.0" prefWidth="294.0" style="-fx-background-color: #214A79;" text="Flights" textAlignment="CENTER" textFill="WHITE">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Arrivals" />
-                <MenuItem mnemonicParsing="false" text="Departures" />
-              </items>
-               <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </MenuButton>
-            <Button id="l" fx:id="login" mnemonicParsing="false" onAction="#login" prefHeight="116.0" prefWidth="298.0" style="-fx-background-color: #214A79;" text="Login" textFill="#faf6f6">
-               <font>
-                  <Font name="Times New Roman Bold" size="22.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button id="s" fx:id="signup" mnemonicParsing="false" onAction="#signup" prefHeight="118.0" prefWidth="288.0" style="-fx-background-color: #214A79;" text="Sign Up" textFill="#faf6f6">
-               <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false"  prefHeight="102.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Language" textFill="WHITE">
-              <items>
-                <MenuItem mnemonicParsing="false" text=" English                       Ctrl+C">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="C" control="ANY" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator></MenuItem>
-                <MenuItem mnemonicParsing="false" text="German">
-                     <accelerator>
-                        <KeyCodeCombination alt="ANY" code="ADD" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator></MenuItem>
-              </items>
-               <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </MenuButton>
-         </children>
-      </VBox>
       <ImageView fitHeight="197.0" fitWidth="291.0" layoutY="-3.0">
          <image>
-            <Image url="file:///C:/Users/Admin/Downloads/knk_project_gr12/KNK_Project_Gr12_/images/logo.png" />
+            <Image url="@../../../../../logo.png" />
          </image>
       </ImageView>
       <Pane layoutX="289.0" prefHeight="761.0" prefWidth="636.0">
@@ -138,7 +76,7 @@
                   <Font size="48.0" />
                </font>
             </Label>
-            <BarChart fx:id="barchart" layoutX="17.0" layoutY="494.0" prefHeight="221.0" prefWidth="603.0" title="Flights Statistics">
+            <BarChart fx:id="barchart" layoutX="17.0" layoutY="494.0" prefHeight="221.0" prefWidth="603.0" title="Arrivals Statistics">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -148,5 +86,75 @@
             </BarChart>
          </children>
       </Pane>
+            <VBox layoutY="193.0" prefHeight="570.0" prefWidth="291.0" style="-fx-background-color: #214A79;">
+         <children>
+            <Button fx:id="arrivals" defaultButton="true" mnemonicParsing="false" onAction="#arrivals" prefHeight="116.0" prefWidth="309.0" style="-fx-background-color: #214A79;" text="Arrivals" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="departures" defaultButton="true" mnemonicParsing="false" onAction="#departures" prefHeight="117.0" prefWidth="319.0" style="-fx-background-color: #214A79;" text="Departures" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button id="n" fx:id="news" alignment="CENTER" blendMode="LIGHTEN" centerShape="false" defaultButton="true" mnemonicParsing="false" onAction="#news" prefHeight="97.0" prefWidth="294.0" style="-fx-background-color: #214A79;" text="News" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Button>
+            <Button id="l" fx:id="login" mnemonicParsing="false" onAction="#login" prefHeight="101.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Login" textFill="#faf6f6">
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button id="s" fx:id="signup" mnemonicParsing="false" onAction="#signup" prefHeight="95.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="Sign Up" textFill="#faf6f6">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false" onAction="#language" prefHeight="102.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Language" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+              <items>
+                  <MenuItem fx:id="eng" mnemonicParsing="false" onAction="#english" text="English      ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="E" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="ger" mnemonicParsing="false" onAction="#german" text="German        ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="G" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                      <MenuItem fx:id="al" mnemonicParsing="false" onAction="#albanian" text="Shqip        ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+               </items>
+            </MenuButton>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
