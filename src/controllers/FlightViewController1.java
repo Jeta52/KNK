@@ -79,19 +79,35 @@ public class FlightViewController1 implements Initializable{
 
     @FXML
     private Button departures;
-
+    
     @FXML
     private MenuItem eng;
 
     @FXML
     private MenuItem ger;
+    
+    @FXML
+    private MenuItem al;
+
+
     @FXML
     void language(ActionEvent event) throws IOException {
-      //
-
+    	
+    	eng.setOnAction(a-> {
+    		english(a);
+    	});
+    	ger.setOnAction(a-> {
+    		german(a);
+    	});
+    	al.setOnAction(a-> {
+    		albanian(a);
+    	});
+    	language.getItems().addAll(eng,ger,al);
+    	
     }
-   
-    @FXML
+ 
+
+	@FXML
     void login(ActionEvent event) throws IOException{
     	this.login((Node) event.getSource());
     }
@@ -178,26 +194,35 @@ public class FlightViewController1 implements Initializable{
 
 
 	    }
-			
 	    @FXML
-	    void eng(ActionEvent event) {
-	    	I18N.buttonForKey("button.english");
-	    	switchLanguage(Locale.ENGLISH);
-
+	   void english(ActionEvent event) {
+	    	loadMessages("en");
+	    	
 	    }
 
 	    @FXML
-	    void ger(ActionEvent event) {
-	    	I18N.buttonForKey("button.german");
-	    	switchLanguage(Locale.GERMAN);
-	    }
-
+	    void german(ActionEvent event) {
+	         loadMessages("de");
 	    
-	    private Integer numSwitches = 0;
-	    private void switchLanguage(Locale locale) {
-	        numSwitches++;
-	        I18N.setLocale(locale);
 	    }
+	    
+	    @FXML
+	    void albanian(ActionEvent event) {
+	          loadMessages("al");
+	    	
+	    }
+	    
+private ResourceBundle bundle;
+private void loadMessages(String messages) {
+	Locale locale = new Locale(messages);
+    bundle = ResourceBundle.getBundle("resources.messages",locale);
+	news.setText(bundle.getString("Button"));
+	login.setText(bundle.getString("Button1"));
+	signup.setText(bundle.getString("Button2"));
+	arrivals.setText(bundle.getString("Button3"));
+	departures.setText(bundle.getString("Button4"));
+	language.setText(bundle.getString("MenuButton"));
+}
 
     	ObservableList<Flight1>list=FXCollections.observableArrayList();
     	
