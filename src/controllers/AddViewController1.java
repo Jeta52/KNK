@@ -128,7 +128,7 @@ ObservableList<AddFlight1> DataList;
     		pst.execute();
     		JOptionPane.showMessageDialog(null, "Flight Add Success");
     		UpdateTable1();
-    		search_flight1();
+    		
     	}catch(Exception e) {
     		JOptionPane.showMessageDialog(null, e);
     	}
@@ -166,7 +166,7 @@ ObservableList<AddFlight1> DataList;
     		pst.execute();
     		JOptionPane.showMessageDialog(null, "Update");
     		UpdateTable1();
-    		search_flight1();
+    		
     		
     	}catch(Exception e) {
     		JOptionPane.showMessageDialog(null, e);
@@ -185,7 +185,7 @@ ObservableList<AddFlight1> DataList;
 		  pst.execute();
 		  JOptionPane.showMessageDialog(null, "Delete");
 		  UpdateTable1();
-		  search_flight1();
+		  
 		  
 	  }catch(Exception e) {
 		  JOptionPane.showMessageDialog(null, e);
@@ -205,53 +205,7 @@ ObservableList<AddFlight1> DataList;
 	  Table1.setItems(listN);
   }
   
-  @FXML
-  void  search_flight1() {
-//	  Flight.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("flight2"));
-//	  Airline.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("airline2"));
-//	  To.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("to2"));
-//	  Date.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("date2"));
-//	  Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("scheduled2"));
-//	 Eta.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("etd2"));
-//	  Status.setCellValueFactory(new PropertyValueFactory<AddFlight1,String>("status2"));
-//	  
-//	  
-//	  dataList=DBConnect.getFlight1();
-//	  Table.setItems(dataList);
-//	  
-//	  FilteredList<AddFlight1>filteredData=new FilteredList<>(dataList,b->true);
-//	  
-//	  filterField.textProperty().addListener((observable,oldValue,newValue)->{
-//		  filteredData.setPredicate(person->{
-//			  if(newValue==null||newValue.isEmpty()) {
-//				  return true;
-//			  }
-//			  String lowerCaseFilter=newValue.toLowerCase();
-//			  
-//			  if(person.getFlight().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-//				  return true;
-//			  }else if(person.getAirline().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-//				  return true;
-//			  }else if(person.getFrom().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-//				  return true;
-//			  }else if(person.getDate().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-//				  return true;
-//			  }else if(person.getScheduled().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-//				  return true;
-//			  }else if(person.getEta().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-//				  return true;
-//			  }else if(person.getStatus().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-//				  return true;
-//			  }else
-//				  return false;
-//			  
-//			  
-//		  });
-//	  });
-//	  SortedList<AddFlight1>sortedData=new SortedList<>(filteredData);
-//	  sortedData.comparatorProperty().bind(Table.comparatorProperty());
-//	  Table.setItems(sortedData);
-  }
+  
  		
 	@FXML
 	private void adminHandler(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
@@ -263,7 +217,7 @@ ObservableList<AddFlight1> DataList;
 				getClass().getResource("/views/AdddView.fxml")
 				);
 		Parent pane = loader.load();
-		Scene scene = new Scene(pane, 842, 526);
+		Scene scene = new Scene(pane, 920, 720);
 		Stage primaryStage = (Stage) source.getScene().getWindow();
 		primaryStage.setScene(scene);
 	}
@@ -272,6 +226,8 @@ ObservableList<AddFlight1> DataList;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
+			list=DBConnect.getFlight1();
+			Table1.setItems(list);
 			Connection con = DBConnect.connection();
 			ResultSet rs = con.createStatement().executeQuery("select * from flights2");
 			
@@ -324,8 +280,7 @@ ObservableList<AddFlight1> DataList;
 		  SortedList<AddFlight1>sortedData=new SortedList<>(filteredData);
 		  sortedData.comparatorProperty().bind(Table1.comparatorProperty());
 		  Table1.setItems(sortedData);
-//		UpdateTable();
-//		search_flight();
+
 		
 		
 	}
