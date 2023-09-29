@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminViewController">
+   <children>
+      <VBox layoutY="193.0" prefHeight="570.0" prefWidth="290.0" style="-fx-background-color: #214A79;">
+         <children>
+            <Button id="l" fx:id="login" alignment="CENTER" mnemonicParsing="false" onAction="#login" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="LOG OUT" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false" onAction="#language" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="LANGUAGE" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <items>
+                  <MenuItem fx:id="eng" mnemonicParsing="false" onAction="#english" text="English      ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="E" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="ger" mnemonicParsing="false" onAction="#german" text="German        ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="G" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="al" mnemonicParsing="false" onAction="#albanian" text="Shqip        ">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+               </items>
+            </MenuButton>
+         </children>
+      </VBox>
+      <Pane layoutX="287.0" layoutY="191.0" prefHeight="570.0" prefWidth="630.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="arrivals_btn" layoutX="45.0" layoutY="79.0" mnemonicParsing="false" onAction="#arrivalsEventHandler" prefHeight="88.0" prefWidth="240.0" style="-fx-background-color: #214A79 #214A79;" text="Manage Arrivals" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="departures_btn" layoutX="325.0" layoutY="79.0" mnemonicParsing="false" onAction="#departuresHandler" prefHeight="88.0" prefWidth="240.0" style="-fx-background-color: #214A79 #214A79;" text="Manage Departures" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="324.0" fitWidth="558.0" layoutX="36.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/1024px-Paper_Plane_Vector.svg.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <ImageView fitHeight="199.0" fitWidth="919.0" layoutX="-2.0" layoutY="-6.0">
+         <image>
+            <Image url="@../../images/logo2.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
