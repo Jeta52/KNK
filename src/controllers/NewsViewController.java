@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import database.DBConnect;
@@ -22,7 +23,10 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyCodeCombination;
+
 
 
 
@@ -223,9 +227,3 @@ private void loadMessages(String messages) {
 	 
 	    
 }
-
-
-
-
-
-
