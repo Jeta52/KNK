@@ -40,6 +40,8 @@ import model.AddFlight1;
 public class AddViewController1 implements Initializable {
 	@FXML
     private TableColumn<AddFlight1,String > Airline1;
+	@FXML
+	private Button flightarrivaltest;
 
     @FXML
     private TableColumn<AddFlight1,String> Date1;
@@ -67,6 +69,12 @@ public class AddViewController1 implements Initializable {
 
     @FXML
     private Button delete1;
+    
+    @FXML
+    private Button back;
+    
+    @FXML
+    private Button refresh;
 
     @FXML
     private TextField filterField1;
@@ -217,9 +225,45 @@ ObservableList<AddFlight1> DataList;
 			this.loadFlight((Node) ae.getSource());
 	}
 	
+	@FXML
+	private void flightHandlertest(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+		this.loadAdmin((Node) event.getSource());
+	}
+	
+	
 	private void loadFlight(Node source) throws IOException {
 		FXMLLoader loader = new FXMLLoader(
 				getClass().getResource("/views/FlightView2.fxml")
+				);
+		Parent pane = loader.load();
+		Scene scene = new Scene(pane, 920, 760);
+		Stage primaryStage = (Stage) source.getScene().getWindow();
+		primaryStage.setScene(scene);
+	}
+	
+	@FXML
+	private void backHandler(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+		this.loadAdminView((Node) event.getSource());
+	}
+  
+	private void loadAdminView(Node source) throws IOException {
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/views/AdminViewSecond.fxml")
+				);
+		Parent pane = loader.load();
+		Scene scene = new Scene(pane, 920, 760);
+		Stage primaryStage = (Stage) source.getScene().getWindow();
+		primaryStage.setScene(scene);
+	}
+	
+	@FXML
+	private void refreshHandler(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+		this.loadRefresh((Node) event.getSource());
+	}
+  
+	private void loadRefresh(Node source) throws IOException {
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/views/AddView1.fxml")
 				);
 		Parent pane = loader.load();
 		Scene scene = new Scene(pane, 920, 760);
