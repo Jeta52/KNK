@@ -8,34 +8,35 @@
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeViewController">
+<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeViewController">
    <children>
-      <VBox layoutY="193.0" prefHeight="570.0" prefWidth="291.0" style="-fx-background-color: #214A79;">
+      <VBox layoutY="193.0" prefHeight="570.0" prefWidth="290.0" style="-fx-background-color: #214A79;">
          <children>
-            <Button fx:id="arrivals" defaultButton="true" mnemonicParsing="false" onAction="#arrivals" prefHeight="116.0" prefWidth="309.0" style="-fx-background-color: #214A79;" text="Arrivals" textFill="WHITE">
+            <Button fx:id="arrivals" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#arrivals" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="ARRIVALS" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="departures" defaultButton="true" mnemonicParsing="false" onAction="#departures" prefHeight="117.0" prefWidth="319.0" style="-fx-background-color: #214A79;" text="Departures" textFill="WHITE">
+            <Button fx:id="departures" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#departures" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="DEPARTURES" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="n" fx:id="news" alignment="CENTER" blendMode="LIGHTEN" centerShape="false" defaultButton="true" mnemonicParsing="false" onAction="#news" prefHeight="97.0" prefWidth="294.0" style="-fx-background-color: #214A79;" text="News" textFill="WHITE">
+            <Button id="n" fx:id="news" alignment="CENTER" blendMode="LIGHTEN" centerShape="false" defaultButton="true" mnemonicParsing="false" onAction="#news" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="NEWS" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <effect>
                   <ColorAdjust />
@@ -46,24 +47,24 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></Button>
-            <Button id="l" fx:id="login" mnemonicParsing="false" onAction="#login" prefHeight="101.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Login" textFill="#faf6f6">
+            <Button id="l" fx:id="login" alignment="CENTER" mnemonicParsing="false" onAction="#login" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="LOG IN" textFill="#faf6f6">
                <font>
-                  <Font name="Times New Roman Bold" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button id="s" fx:id="signup" mnemonicParsing="false" onAction="#signup" prefHeight="95.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="Sign Up" textFill="#faf6f6">
+            <Button id="s" fx:id="signup" alignment="CENTER" mnemonicParsing="false" onAction="#signup" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="SIGN UP" textFill="#faf6f6">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Times New Roman" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false" onAction="#language" prefHeight="102.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Language" textFill="WHITE">
+            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false" onAction="#language" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="LANGUAGE" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -85,7 +86,7 @@
             </MenuButton>
          </children>
       </VBox>
-      <Pane layoutX="289.0" prefHeight="761.0" prefWidth="636.0">
+      <Pane layoutX="289.0" prefHeight="761.0" prefWidth="630.0">
          <children>
             <ImageView fitHeight="772.0" fitWidth="636.0" layoutY="-6.0">
                <image>
