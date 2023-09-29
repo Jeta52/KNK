@@ -42,6 +42,9 @@ public class AdddViewController implements Initializable {
 	@FXML
     private TableColumn<AddFlight, String> Airline;
 
+	@FXML
+	private Button flightarrivaltest;
+
     @FXML
     private TableColumn<AddFlight, String> Date;
 
@@ -69,6 +72,12 @@ public class AdddViewController implements Initializable {
     private Button delete;
     @FXML
     private Button update;
+    
+    @FXML
+    private Button back;
+    
+    @FXML
+    private Button refresh;
 
     @FXML
     private TextField txt_airline;
@@ -190,10 +199,6 @@ ObservableList<AddFlight> dataList;
 	  }
   }
   
-
-	
-
-  
  
 	@FXML
 	private void adminHandler1(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
@@ -214,6 +219,11 @@ ObservableList<AddFlight> dataList;
 	private void flightHandler(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
 			this.loadFlight((Node) ae.getSource());
 	}
+  	
+	@FXML
+	private void flightHandlertest(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+		this.loadAdmin1((Node) event.getSource());
+	}
 	
 	private void loadFlight(Node source) throws IOException {
 		FXMLLoader loader = new FXMLLoader(
@@ -224,8 +234,37 @@ ObservableList<AddFlight> dataList;
 		Stage primaryStage = (Stage) source.getScene().getWindow();
 		primaryStage.setScene(scene);
 	}
+	
+	@FXML
+	private void backHandler(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+		this.loadAdminView((Node) event.getSource());
+	}
   
+	private void loadAdminView(Node source) throws IOException {
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/views/AdminViewSecond.fxml")
+				);
+		Parent pane = loader.load();
+		Scene scene = new Scene(pane, 920, 760);
+		Stage primaryStage = (Stage) source.getScene().getWindow();
+		primaryStage.setScene(scene);
+	}
+	
+	@FXML
+	private void refreshHandler(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+		this.loadRefresh((Node) event.getSource());
+	}
   
+	private void loadRefresh(Node source) throws IOException {
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/views/AdddView.fxml")
+				);
+		Parent pane = loader.load();
+		Scene scene = new Scene(pane, 920, 760);
+		Stage primaryStage = (Stage) source.getScene().getWindow();
+		primaryStage.setScene(scene);
+	}
+	
    	ObservableList<AddFlight>list3=FXCollections.observableArrayList();
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
