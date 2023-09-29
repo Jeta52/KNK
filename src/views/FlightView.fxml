@@ -17,29 +17,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlightViewController">
+<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlightViewController">
    <children>
- <VBox layoutY="193.0" prefHeight="570.0" prefWidth="291.0" style="-fx-background-color: #214A79;">
+ <VBox layoutY="193.0" prefHeight="570.0" prefWidth="290.0" style="-fx-background-color: #214A79;">
          <children>
-            <Button fx:id="arrivals" defaultButton="true" mnemonicParsing="false" onAction="#arrivals" prefHeight="116.0" prefWidth="309.0" style="-fx-background-color: #214A79;" text="Arrivals" textFill="WHITE">
+            <Button fx:id="arrivals" defaultButton="true" mnemonicParsing="false" onAction="#arrivals" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="ARRIVALS" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="departures" defaultButton="true" mnemonicParsing="false" onAction="#departures" prefHeight="117.0" prefWidth="319.0" style="-fx-background-color: #214A79;" text="Departures" textFill="WHITE">
+            <Button fx:id="departures" defaultButton="true" mnemonicParsing="false" onAction="#departures" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="DEPARTURES" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="n" fx:id="news" alignment="CENTER" blendMode="LIGHTEN" centerShape="false" defaultButton="true" mnemonicParsing="false" onAction="#news" prefHeight="97.0" prefWidth="294.0" style="-fx-background-color: #214A79;" text="News" textFill="WHITE">
+            <Button id="n" fx:id="news" alignment="CENTER" blendMode="LIGHTEN" centerShape="false" defaultButton="true" mnemonicParsing="false" onAction="#news" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="NEWS" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <effect>
                   <ColorAdjust />
@@ -50,24 +50,24 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></Button>
-            <Button id="l" fx:id="login" mnemonicParsing="false" onAction="#login" prefHeight="101.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Login" textFill="#faf6f6">
+            <Button id="l" fx:id="login" alignment="CENTER" mnemonicParsing="false" onAction="#login" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="LOG IN" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold" size="22.0" />
+                  <Font name="Times New Roman" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button id="s" fx:id="signup" mnemonicParsing="false" onAction="#signup" prefHeight="95.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="Sign Up" textFill="#faf6f6">
+            <Button id="s" fx:id="signup" alignment="CENTER" mnemonicParsing="false" onAction="#signup" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="SIGN UP" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false" onAction="#language" prefHeight="102.0" prefWidth="291.0" style="-fx-background-color: #214A79;" text="Language" textFill="WHITE">
+            <MenuButton id="la" fx:id="language" alignment="CENTER" blendMode="LIGHTEN" cache="true" mnemonicParsing="false" onAction="#language" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: #214A79;" text="LANGUAGE" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold Italic" size="22.0" />
+                  <Font name="Serif Regular" size="30.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -89,29 +89,29 @@
             </MenuButton>
          </children>
       </VBox>
-      <Pane layoutX="287.0" layoutY="-22.0" prefHeight="761.0" prefWidth="636.0">
+      <Pane layoutX="287.0" layoutY="191.0" prefHeight="570.0" prefWidth="632.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="14.0" layoutY="223.0" prefHeight="36.0" prefWidth="200.0" text="ARRIVALS" textFill="#b13c3c" textOverrun="WORD_ELLIPSIS">
-               <font>
-                  <Font name="Arial Black" size="17.0" />
-               </font>
-            </Label>
-            <TableView fx:id="table" layoutX="13.0" layoutY="259.0" prefHeight="481.0" prefWidth="610.0">
+            <TableView fx:id="table" layoutX="14.0" layoutY="48.0" prefHeight="500.0" prefWidth="600.0">
                <columns>
-                  <TableColumn fx:id="flight" prefWidth="101.3333740234375" text="FLIGHT" />
-                  <TableColumn fx:id="airline" prefWidth="92.0" text="AIRLINE" />
-                  <TableColumn fx:id="from" prefWidth="91.20001220703125" text="FROM" />
-                  <TableColumn fx:id="date" prefWidth="68.00006103515625" text="DATE" />
-                  <TableColumn fx:id="scheduled" prefWidth="104.00006103515625" text="SCHEDULED" />
-                  <TableColumn fx:id="eta" prefWidth="54.6666259765625" text="ETA" />
-                  <TableColumn fx:id="status" prefWidth="118.6666259765625" text="STATUS" />
+                  <TableColumn fx:id="flight" prefWidth="100.0" text="FLIGHT" />
+                  <TableColumn fx:id="airline" prefWidth="90.0" text="AIRLINE" />
+                  <TableColumn fx:id="from" prefWidth="90.0" text="FROM" />
+                  <TableColumn fx:id="date" prefWidth="70.0" text="DATE" />
+                  <TableColumn fx:id="scheduled" prefWidth="100.0" text="SCHEDULED" />
+                  <TableColumn fx:id="eta" prefWidth="70.0" text="ETA" />
+                  <TableColumn fx:id="status" text="STATUS" />
                </columns>
             </TableView>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="36.0" prefWidth="200.0" text="ARRIVALS" textFill="#842929" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Arial Black" size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <ImageView fitHeight="202.0" fitWidth="298.0" layoutX="-2.0" layoutY="-6.0">
+      <ImageView fitHeight="199.0" fitWidth="919.0" layoutX="-2.0" layoutY="-6.0">
          <image>
-            <Image url="@../../images/logo.png" />
+            <Image url="@../../images/logo2.png" />
          </image>
       </ImageView>
    </children>
