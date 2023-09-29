@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,18 +8,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdddViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdddViewController">
    <children>
       <AnchorPane prefHeight="58.0" prefWidth="919.0" style="-fx-background-color:  #214A79;">
          <children>
-            <Label alignment="CENTER" layoutX="246.0" layoutY="13.0" prefHeight="17.0" prefWidth="350.0" text="Add Flight Arrivals" textFill="#f8f7f7">
+            <Label alignment="CENTER" layoutX="285.0" prefHeight="58.0" prefWidth="350.0" text="Manage Arrivals" textFill="#f8f7f7">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="38.0" />
                </font>
             </Label>
+            <Button fx:id="flightarrivaltest" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#flightHandlertest" prefHeight="39.0" prefWidth="103.0" text="DEPARTURES">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="back" layoutX="137.0" layoutY="9.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="39.0" prefWidth="103.0" text="BACK">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <TextField fx:id="txt_flight" layoutX="27.0" layoutY="149.0"  prefHeight="26.0" prefWidth="269.0" promptText="Flight" />
+      <TextField fx:id="txt_flight" layoutX="27.0" layoutY="149.0" prefHeight="26.0" prefWidth="269.0" promptText="Flight" />
       <TextField fx:id="txt_airline" layoutX="26.0" layoutY="191.0" prefHeight="26.0" prefWidth="270.0" promptText="Airline" />
       <TextField fx:id="txt_from" layoutX="26.0" layoutY="236.0" prefHeight="26.0" prefWidth="270.0" promptText="From" />
       <TextField fx:id="txt_status" layoutX="26.0" layoutY="360.0" prefHeight="26.0" prefWidth="270.0" promptText="Status" />
@@ -53,9 +61,16 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="filterField" layoutX="40.0" layoutY="441.0" promptText="Search"/>
-      <Label layoutX="7.0" layoutY="445.0" text="Filter" />
-      <Hyperlink fx:id="flighthyp1" layoutX="203.0" layoutY="440.0" onAction="#adminHandler1" text="Add Flight Departures " />
-      <Hyperlink fx:id="flightarrival" layoutX="203.0" layoutY="466.0" onAction="#flightHandler" text="Flight arrival view" />
+      <TextField fx:id="filterField" layoutX="146.0" layoutY="441.0" promptText="Search" />
+      <Label layoutX="102.0" layoutY="443.0" prefHeight="19.0" prefWidth="36.0" text="Filter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="refresh" contentDisplay="CENTER" layoutX="812.0" layoutY="81.0" mnemonicParsing="false" onAction="#refreshHandler" prefHeight="39.0" prefWidth="72.0" text="REFRESH">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
