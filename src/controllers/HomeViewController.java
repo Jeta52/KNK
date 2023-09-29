@@ -70,6 +70,7 @@ public class HomeViewController {
 	    		albanian(a);
 	    	});
 	    	language.getItems().addAll(eng,ger,al);
+	    }
 		    
 	    @FXML
 	    void login(ActionEvent event) throws IOException{
@@ -192,4 +193,3 @@ public class HomeViewController {
 
 
 }
-
