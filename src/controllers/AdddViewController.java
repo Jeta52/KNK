@@ -37,298 +37,290 @@ import javax.swing.JOptionPane;
 import database.DBConnect;
 import model.AddFlight;
 
-
 public class AdddViewController implements Initializable {
-	@FXML
-    private TableColumn<AddFlight, String> Airline;
+  @FXML
+  private TableColumn < AddFlight, String > Airline;
 
-	@FXML
-	private Button flightarrivaltest;
+  @FXML
+  private Button flightarrivaltest;
 
-    @FXML
-    private TableColumn<AddFlight, String> Date;
+  @FXML
+  private TableColumn < AddFlight, String > Date;
 
-    @FXML
-    private TableColumn<AddFlight, String> Eta;
+  @FXML
+  private TableColumn < AddFlight, String > Eta;
 
-    @FXML
-    private TableColumn<AddFlight, String> Flight;
+  @FXML
+  private TableColumn < AddFlight, String > Flight;
 
-    @FXML
-    private TableColumn<AddFlight, String> From;
+  @FXML
+  private TableColumn < AddFlight, String > From;
 
-    @FXML
-    private TableColumn<AddFlight, String> Scheduled;
+  @FXML
+  private TableColumn < AddFlight, String > Scheduled;
 
-    @FXML
-    private TableColumn<AddFlight, String> Status;
+  @FXML
+  private TableColumn < AddFlight, String > Status;
 
-    @FXML
-    private TableView<AddFlight> Table;
+  @FXML
+  private TableView < AddFlight > Table;
 
-    @FXML
-    private Button addFlight;
-    @FXML
-    private Button delete;
-    @FXML
-    private Button update;
-    
-    @FXML
-    private Button back;
-    
-    @FXML
-    private Button refresh;
+  @FXML
+  private Button addFlight;
+  @FXML
+  private Button delete;
+  @FXML
+  private Button update;
 
-    @FXML
-    private TextField txt_airline;
+  @FXML
+  private Button back;
 
-    @FXML
-    private TextField txt_date;
+  @FXML
+  private Button refresh;
 
-    @FXML
-    private TextField txt_eta;
+  @FXML
+  private TextField txt_airline;
 
-    @FXML
-    private TextField txt_flight;
+  @FXML
+  private TextField txt_date;
 
-    @FXML
-    private TextField txt_from;
+  @FXML
+  private TextField txt_eta;
 
-    @FXML
-    private TextField txt_scheduled;
+  @FXML
+  private TextField txt_flight;
 
-    @FXML
-    private TextField txt_status;
-    @FXML
-    private TextField filterField;
-    @FXML
-    private Hyperlink flightHyp1;
-    @FXML
-    private Hyperlink flightarrival;
-    
-    
-int index = -1;
-    
-ObservableList<AddFlight> listM;
-ObservableList<AddFlight> dataList;
+  @FXML
+  private TextField txt_from;
 
-    Connection conn =null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
-    
-   
+  @FXML
+  private TextField txt_scheduled;
 
-    
-    public void Add_flights (){    
-        conn = DBConnect.connection();
-        String sql="insert into flights1(flight1, airline1,from1,date1,scheduled1,eta,status1)values(?,?,?,?,?,?,?)";
-    	try {
-    		pst=conn.prepareStatement(sql);
-    		pst.setString(1, txt_flight.getText());
-    		pst.setString(2, txt_airline.getText());
-    		pst.setString(3, txt_from.getText());
-    		pst.setString(4, txt_date.getText());
-    		pst.setString(5, txt_scheduled.getText());
-    		pst.setString(6, txt_eta.getText());
-    		pst.setString(7, txt_status.getText());
-    		pst.execute();
-    		JOptionPane.showMessageDialog(null, "Flight Add Success");
-    		
-    		
-    	}catch(Exception e) {
-    		JOptionPane.showMessageDialog(null, e);
-    	}
+  @FXML
+  private TextField txt_status;
+  @FXML
+  private TextField filterField;
+  @FXML
+  private Hyperlink flightHyp1;
+  @FXML
+  private Hyperlink flightarrival;
 
+  private String originalFlightValue;
+
+  int index = -1;
+
+  ObservableList < AddFlight > listM;
+  ObservableList < AddFlight > dataList;
+
+  Connection conn = null;
+  ResultSet rs = null;
+  PreparedStatement pst = null;
+
+  public void Add_flights() {
+    conn = DBConnect.connection();
+    String sql = "insert into flights1(flight1, airline1,from1,date1,scheduled1,eta,status1)values(?,?,?,?,?,?,?)";
+    try {
+      pst = conn.prepareStatement(sql);
+      pst.setString(1, txt_flight.getText());
+      pst.setString(2, txt_airline.getText());
+      pst.setString(3, txt_from.getText());
+      pst.setString(4, txt_date.getText());
+      pst.setString(5, txt_scheduled.getText());
+      pst.setString(6, txt_eta.getText());
+      pst.setString(7, txt_status.getText());
+      pst.execute();
+      JOptionPane.showMessageDialog(null, "Flight Add Success");
+
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(null, e);
     }
-    @FXML
-    void getSelected(MouseEvent event) {
-    	index=Table.getSelectionModel().getSelectedIndex();
-    	if(index<=-1) {
-    		return;
-    		
-    	}
-    	txt_flight.setText(Flight.getCellData(index).toString());
-    	txt_airline.setText(Airline.getCellData(index).toString());
-    	txt_from.setText(From.getCellData(index).toString());
-    	txt_date.setText(Date.getCellData(index).toString());
-    	txt_scheduled.setText(Scheduled.getCellData(index).toString());
-    	txt_eta.setText(Eta.getCellData(index).toString());
-    	txt_status.setText(Status.getCellData(index).toString());
-    }
-    
-    public void Edit() {
-    	try {
-    		conn=DBConnect.connection();
-    		String value1=txt_flight.getText();
-    		String value2=txt_airline.getText();
-    		String value3=txt_from.getText();
-    		String value4=txt_date.getText();
-    		String value5=txt_scheduled.getText();
-    		String value6=txt_eta.getText();
-    		String value7=txt_status.getText();
-    		String sql = "update flights1 set flight1= '"+value1+"',airline1= '"+value2+"',from1= '"+
-                    value3+"',date1= '"+value4+"',scheduled1= '"+value5+"',eta= '"+value6+"',status1= '"+value7+"' where flight1='"+value1+"' ";
-    		pst=conn.prepareStatement(sql);
-    		pst.execute();
-    		JOptionPane.showMessageDialog(null, "Update");
-    		
-    		
-    		
-    	}catch(Exception e) {
-    		JOptionPane.showMessageDialog(null, e);
-    	}
-    }
-    
-    
-    
-    
-  public void Delete() {
-	  conn=DBConnect.connection();
-	  String sql="delete from flights1 where flight1=?";
-	  try {
-		  pst=conn.prepareStatement(sql);
-		  pst.setString(1, txt_flight.getText());
-		  pst.execute();
-		  JOptionPane.showMessageDialog(null, "Delete");
-		  
-		 
-		  
-	  }catch(Exception e) {
-		  JOptionPane.showMessageDialog(null, e);
-		  
-	  }
+
   }
-  
- 
-	@FXML
-	private void adminHandler1(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
-			this.loadAdmin1((Node) ae.getSource());
-	}
-	
-	private void loadAdmin1(Node source) throws IOException {
-		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("/views/AddView1.fxml")
-				);
-		Parent pane = loader.load();
-		Scene scene = new Scene(pane, 920, 760);
-		Stage primaryStage = (Stage) source.getScene().getWindow();
-		primaryStage.setScene(scene);
-	}
-  
-  	@FXML
-	private void flightHandler(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
-			this.loadFlight((Node) ae.getSource());
-	}
-  	
-	@FXML
-	private void flightHandlertest(ActionEvent event) throws IOException, NoSuchAlgorithmException {
-		this.loadAdmin1((Node) event.getSource());
-	}
-	
-	private void loadFlight(Node source) throws IOException {
-		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("/views/FlightView.fxml")
-				);
-		Parent pane = loader.load();
-		Scene scene = new Scene(pane, 920, 760);
-		Stage primaryStage = (Stage) source.getScene().getWindow();
-		primaryStage.setScene(scene);
-	}
-	
-	@FXML
-	private void backHandler(ActionEvent event) throws IOException, NoSuchAlgorithmException {
-		this.loadAdminView((Node) event.getSource());
-	}
-  
-	private void loadAdminView(Node source) throws IOException {
-		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("/views/AdminViewSecond.fxml")
-				);
-		Parent pane = loader.load();
-		Scene scene = new Scene(pane, 920, 760);
-		Stage primaryStage = (Stage) source.getScene().getWindow();
-		primaryStage.setScene(scene);
-	}
-	
-	@FXML
-	private void refreshHandler(ActionEvent event) throws IOException, NoSuchAlgorithmException {
-		this.loadRefresh((Node) event.getSource());
-	}
-  
-	private void loadRefresh(Node source) throws IOException {
-		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("/views/AdddView.fxml")
-				);
-		Parent pane = loader.load();
-		Scene scene = new Scene(pane, 920, 760);
-		Stage primaryStage = (Stage) source.getScene().getWindow();
-		primaryStage.setScene(scene);
-	}
-	
-   	ObservableList<AddFlight>list3=FXCollections.observableArrayList();
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		  list3=DBConnect.getFlight();
-		  Table.setItems(list3);
-			try {
-			Connection con=DBConnect.connection();
-			ResultSet rs=con.createStatement().executeQuery("select * from flights1");
-			
-			while (rs.next()) {
-				list3.add(new AddFlight(rs.getString("flight1"),rs.getString("airline1"),rs.getString("from1"),rs.getString("date1"),rs.getString("scheduled1"),rs.getString("eta"),rs.getString("status1")));
-			}
-			
-			
-		}catch(SQLException ex) {
-			Logger.getLogger(FlightViewController.class.getName()).log(Level.SEVERE,null, ex);
-		}
-		Flight.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("flight"));
-		Airline.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("airline"));
-		Date.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("date"));
-		From.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("from"));
-		Scheduled.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("scheduled"));
-		Eta.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("eta"));
-		Status.setCellValueFactory(new PropertyValueFactory<AddFlight,String>("status"));
-		
-		Table.setItems(list3);
-		
-		 FilteredList<AddFlight>filteredData=new FilteredList<>(list3,b->true);
-		  
-		  filterField.textProperty().addListener((observable,oldValue,newValue)->{
-			  filteredData.setPredicate(person->{
-				  if(newValue==null||newValue.isEmpty()) {
-					  return true;
-				  }
-				  String lowerCaseFilter=newValue.toLowerCase();
-				  
-				  if(person.getFlight().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-					  return true;
-				  }else if(person.getAirline().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-					  return true;
-				  }else if(person.getFrom().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-					  return true;
-				  }else if(person.getDate().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-					  return true;
-				  }else if(person.getScheduled().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-					  return true;
-				  }else if(person.getEta().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-					  return true;
-				  }else if(person.getStatus().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-					  return true;
-				  }else
-					  return false;
-				  
-				  
-			  });
-		  });
-		  SortedList<AddFlight>sortedData=new SortedList<>(filteredData);
-		  sortedData.comparatorProperty().bind(Table.comparatorProperty());
-		  Table.setItems(sortedData);
+  @FXML
+  void getSelected(MouseEvent event) {
+    index = Table.getSelectionModel().getSelectedIndex();
+    if (index <= -1) {
+      return;
 
-		
-		
-	}
+    }
+    originalFlightValue = Flight.getCellData(index).toString();
+    txt_flight.setText(Flight.getCellData(index).toString());
+    txt_airline.setText(Airline.getCellData(index).toString());
+    txt_from.setText(From.getCellData(index).toString());
+    txt_date.setText(Date.getCellData(index).toString());
+    txt_scheduled.setText(Scheduled.getCellData(index).toString());
+    txt_eta.setText(Eta.getCellData(index).toString());
+    txt_status.setText(Status.getCellData(index).toString());
+  }
 
+  public void Edit() {
+    try {
+      conn = DBConnect.connection();
+      String value1 = txt_flight.getText();
+      String value2 = txt_airline.getText();
+      String value3 = txt_from.getText();
+      String value4 = txt_date.getText();
+      String value5 = txt_scheduled.getText();
+      String value6 = txt_eta.getText();
+      String value7 = txt_status.getText();
 
-	
+      String sql = "update flights1 set flight1= ?, airline1= ?, from1= ?, date1= ?, scheduled1= ?, eta= ?, status1= ? where flight1= ?";
+      pst = conn.prepareStatement(sql);
+      pst.setString(1, value1);
+      pst.setString(2, value2);
+      pst.setString(3, value3);
+      pst.setString(4, value4);
+      pst.setString(5, value5);
+      pst.setString(6, value6);
+      pst.setString(7, value7);
+      pst.setString(8, originalFlightValue);
+
+      pst.executeUpdate();
+      JOptionPane.showMessageDialog(null, "Update");
+
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(null, e);
+    }
+  }
+
+  public void Delete() {
+    conn = DBConnect.connection();
+    String sql = "delete from flights1 where flight1=?";
+    try {
+      pst = conn.prepareStatement(sql);
+      pst.setString(1, txt_flight.getText());
+      pst.execute();
+      JOptionPane.showMessageDialog(null, "Delete");
+
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(null, e);
+
+    }
+  }
+
+  @FXML
+  private void adminHandler1(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
+    this.loadAdmin1((Node) ae.getSource());
+  }
+
+  private void loadAdmin1(Node source) throws IOException {
+    FXMLLoader loader = new FXMLLoader(
+      getClass().getResource("/views/AddView1.fxml")
+    );
+    Parent pane = loader.load();
+    Scene scene = new Scene(pane, 920, 760);
+    Stage primaryStage = (Stage) source.getScene().getWindow();
+    primaryStage.setScene(scene);
+  }
+
+  @FXML
+  private void flightHandler(ActionEvent ae) throws IOException, NoSuchAlgorithmException {
+    this.loadFlight((Node) ae.getSource());
+  }
+
+  @FXML
+  private void flightHandlertest(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+    this.loadAdmin1((Node) event.getSource());
+  }
+
+  private void loadFlight(Node source) throws IOException {
+    FXMLLoader loader = new FXMLLoader(
+      getClass().getResource("/views/FlightView.fxml")
+    );
+    Parent pane = loader.load();
+    Scene scene = new Scene(pane, 920, 760);
+    Stage primaryStage = (Stage) source.getScene().getWindow();
+    primaryStage.setScene(scene);
+  }
+
+  @FXML
+  private void backHandler(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+    this.loadAdminView((Node) event.getSource());
+  }
+
+  private void loadAdminView(Node source) throws IOException {
+    FXMLLoader loader = new FXMLLoader(
+      getClass().getResource("/views/AdminViewSecond.fxml")
+    );
+    Parent pane = loader.load();
+    Scene scene = new Scene(pane, 920, 760);
+    Stage primaryStage = (Stage) source.getScene().getWindow();
+    primaryStage.setScene(scene);
+  }
+
+  @FXML
+  private void refreshHandler(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+    this.loadRefresh((Node) event.getSource());
+  }
+
+  private void loadRefresh(Node source) throws IOException {
+    FXMLLoader loader = new FXMLLoader(
+      getClass().getResource("/views/AdddView.fxml")
+    );
+    Parent pane = loader.load();
+    Scene scene = new Scene(pane, 920, 760);
+    Stage primaryStage = (Stage) source.getScene().getWindow();
+    primaryStage.setScene(scene);
+  }
+
+  ObservableList < AddFlight > list3 = FXCollections.observableArrayList();
+  @Override
+  public void initialize(URL arg0, ResourceBundle arg1) {
+    list3 = DBConnect.getFlight();
+    Table.setItems(list3);
+    try {
+      Connection con = DBConnect.connection();
+      ResultSet rs = con.createStatement().executeQuery("select * from flights1");
+
+      while (rs.next()) {
+        list3.add(new AddFlight(rs.getString("flight1"), rs.getString("airline1"), rs.getString("from1"), rs.getString("date1"), rs.getString("scheduled1"), rs.getString("eta"), rs.getString("status1")));
+      }
+
+    } catch (SQLException ex) {
+      Logger.getLogger(FlightViewController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    Flight.setCellValueFactory(new PropertyValueFactory < AddFlight, String > ("flight"));
+    Airline.setCellValueFactory(new PropertyValueFactory < AddFlight, String > ("airline"));
+    Date.setCellValueFactory(new PropertyValueFactory < AddFlight, String > ("date"));
+    From.setCellValueFactory(new PropertyValueFactory < AddFlight, String > ("from"));
+    Scheduled.setCellValueFactory(new PropertyValueFactory < AddFlight, String > ("scheduled"));
+    Eta.setCellValueFactory(new PropertyValueFactory < AddFlight, String > ("eta"));
+    Status.setCellValueFactory(new PropertyValueFactory < AddFlight, String > ("status"));
+
+    Table.setItems(list3);
+
+    FilteredList < AddFlight > filteredData = new FilteredList < > (list3, b -> true);
+
+    filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+      filteredData.setPredicate(person -> {
+        if (newValue == null || newValue.isEmpty()) {
+          return true;
+        }
+        String lowerCaseFilter = newValue.toLowerCase();
+
+        if (person.getFlight().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+          return true;
+        } else if (person.getAirline().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+          return true;
+        } else if (person.getFrom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+          return true;
+        } else if (person.getDate().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+          return true;
+        } else if (person.getScheduled().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+          return true;
+        } else if (person.getEta().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+          return true;
+        } else if (person.getStatus().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+          return true;
+        } else
+          return false;
+
+      });
+    });
+    SortedList < AddFlight > sortedData = new SortedList < > (filteredData);
+    sortedData.comparatorProperty().bind(Table.comparatorProperty());
+    Table.setItems(sortedData);
+
+  }
+
 }
